@@ -1,0 +1,18 @@
+planning_plugin: ompl_interface/OMPLPlanner
+default_planner_config: RRTConnectkConfigDefault  # Add this line
+start_state_max_bounds_error: 0.1
+jiggle_fraction: 0.05
+request_adapters: >-
+    default_planner_request_adapters/AddTimeOptimalParameterization
+    default_planner_request_adapters/ResolveConstraintFrames
+    default_planner_request_adapters/FixWorkspaceBounds
+    default_planner_request_adapters/FixStartStateBounds
+    default_planner_request_adapters/FixStartStateCollision
+    default_planner_request_adapters/FixStartStatePathConstraints
+planner_configs:
+  RRTConnectkConfigDefault:
+    type: geometric::RRTConnect
+    range: 0.1  # You can adjust this based on your robot's scale
+# optionally specify group specific overrides
+arm_group:
+  planner_configs: ["RRTConnectkConfigDefault"]

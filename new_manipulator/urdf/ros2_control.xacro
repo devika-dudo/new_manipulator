@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Arguments to select hardware interface -->
+  <xacro:arg name="use_sim" default="true"/>
+  <xacro:arg name="use_fake_hardware" default="false"/>
+
+  <ros2_control name="ManipulatorSystem" type="system">
+    <hardware>
+      <!-- SIMULATION MODE (Gazebo) - use_sim:=true -->
+      <xacro:if value="$(arg use_sim)">
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </xacro:if>
+      
+      <!-- FAKE HARDWARE (testing) - use_fake_hardware:=true -->
+      <xacro:if value="$(arg use_fake_hardware)">
+        <plugin>mock_components/GenericSystem</plugin>
+        <param name="fake_sensor_commands">false</param>
+      </xacro:if>
+      
+      <!-- REAL HARDWARE (ESP32 micro-ROS) - use_sim:=false AND use_fake_hardware:=false -->
+      <xacro:unless value="$(arg use_sim)">
+        <xacro:unless value="$(arg use_fake_hardware)">
+          <plugin>new_manipulator_hardware/MicroROSHardware</plugin>
+        </xacro:unless>
+      </xacro:unless>
+    </hardware>
+
+    <!-- Joint 1 -->
+    <joint name="joint_1">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 2 -->
+    <joint name="joint_2">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 3 -->
+    <joint name="joint_3">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 4 -->
+    <joint name="joint_4">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 5 -->
+    <joint name="joint_5">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Fake Joint -->
+    <joint name="fake_joint">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 6 (Gripper) -->
+    <joint name="joint_6">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 7 (Mimic joint) -->
+    <joint name="joint_7">
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <param name="mimic">joint_6</param>
+      <param name="multiplier">-1</param>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 8 (Mimic joint) -->
+    <joint name="joint_8">
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <param name="mimic">joint_6</param>
+      <param name="multiplier">-0.01</param>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <!-- Joint 9 (Mimic joint) -->
+    <joint name="joint_9">
+      <state_interface name="position">
+        <param name="initial_value">0.0</param>
+      </state_interface>
+      <param name="mimic">joint_6</param>
+      <param name="multiplier">-0.01</param>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+  <!-- Gazebo plugin (only loaded in simulation) -->
+  <xacro:if value="$(arg use_sim)">
+    <gazebo>
+      <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+        <parameters>/home/devika/new_manipulator/src/new_manipulator/config/controller_manager.yaml</parameters>
+        <controller_manager_node_name>controller_manager</controller_manager_node_name>
+        <ros>
+          <namespace>/</namespace>
+        </ros>
+      </plugin>
+    </gazebo>
+  </xacro:if>
+
+</robot>
