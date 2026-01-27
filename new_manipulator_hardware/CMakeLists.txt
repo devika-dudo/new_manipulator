@@ -6,6 +6,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # find dependencies
+find_package(control_msgs REQUIRED)
+
 find_package(ament_cmake REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
@@ -32,9 +34,11 @@ ament_target_dependencies(
   hardware_interface
   pluginlib
   rclcpp
+  control_msgs
   sensor_msgs
   std_msgs
 )
+
 
 # Export hardware plugin
 pluginlib_export_plugin_description_file(hardware_interface new_manipulator_hardware.xml)
@@ -50,7 +54,11 @@ install(
   DIRECTORY hardware/include/
   DESTINATION include
 )
-
+# Install Python scripts
+install(PROGRAMS
+  src/mode_switcher.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 install(
   FILES new_manipulator_hardware.xml
   DESTINATION share/${PROJECT_NAME}

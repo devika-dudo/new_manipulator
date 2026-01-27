@@ -22,19 +22,23 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>moveit_common</depend>
-
+<depend>moveit_ros_planning_interface</depend>
+<depend>moveit_core</depend>
+<depend>sensor_msgs</depend>
+<depend>std_msgs</depend>
+<depend>trajectory_msgs</depend>
   <depend>control_msgs</depend>
   <depend>control_toolbox</depend>
   <depend>geometry_msgs</depend>
   <depend>moveit_msgs</depend>
-  <depend>moveit_core</depend>
-  <depend>moveit_ros_planning_interface</depend>
+
+  <depend>std_srvs</depend> 
   <depend>pluginlib</depend>
-  <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
-  <depend>std_srvs</depend>
+
+
+
   <depend>tf2_eigen</depend>
-  <depend>trajectory_msgs</depend>
+
 
   <exec_depend>gripper_controllers</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>

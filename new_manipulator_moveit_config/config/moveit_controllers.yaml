@@ -22,5 +22,5 @@ moveit_simple_controller_manager:
     type: FollowJointTrajectory
     joints:
       - joint_6
-    action_ns: follow_joint_trajectory
+    action_ns: follow_joint_trajectoryzzz
     default: true

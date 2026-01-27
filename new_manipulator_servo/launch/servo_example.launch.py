@@ -114,15 +114,17 @@ def generate_launch_description():
         output="screen",
     )
     
-    # Joy node (hardware interface)
+# Joy node (hardware interface) - REMAPPED to /joy2
     joy_node = Node(
-        package="joy",
-        executable="joy_node",
-        name="joy_node",
-        parameters=[{"use_sim_time": True}],
-        output="screen",
-    )
-    
+    package="joy",
+    executable="joy_node",
+    name="joy_node",
+    parameters=[{"use_sim_time": False}],  # Also changed to match servo_node
+    remappings=[
+        ('/joy', '/joy2'),  # ← This makes joy_node publish to /joy2
+    ],
+    output="screen",
+)
     return LaunchDescription([
         rviz_node,
         container,

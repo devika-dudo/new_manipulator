@@ -4,9 +4,9 @@
  
 import os
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, EmitEvent, RegisterEventHandler, TimerAction
+from launch.actions import DeclareLaunchArgument, EmitEvent, RegisterEventHandler
 from launch.conditions import IfCondition
-from launch.event_handlers import OnProcessExit, OnProcessStart
+from launch.event_handlers import OnProcessExit
 from launch.events import Shutdown
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
@@ -52,7 +52,7 @@ def generate_launch_description():
     # Declare the launch arguments
     declare_use_sim_time_cmd = DeclareLaunchArgument(
         name='use_sim_time',
-        default_value='false',  # Changed default to false for hardware
+        default_value='true',
         description='Use simulation (Gazebo) clock if true')
  
     declare_use_rviz_cmd = DeclareLaunchArgument(
@@ -84,35 +84,18 @@ def generate_launch_description():
     )
      
     # Start the actual move_group node/action server
-    # ✅ NOW USES LAUNCH ARGUMENT INSTEAD OF HARDCODED True
     start_move_group_node_cmd = Node(
         package="moveit_ros_move_group",
         executable="move_group",
         output="screen",
         parameters=[
             moveit_config.to_dict(),
-            {'use_sim_time': use_sim_time},  # ✅ FIXED: Now uses LaunchConfiguration
+            {'use_sim_time': use_sim_time},
             {'start_state': {'content': initial_positions_file_path}},
-            # Enable immediate execution for interactive markers
-            {'move_group.default_planning_pipeline': 'ompl'},
-            {'trajectory_execution.allowed_execution_duration_scaling': 2.0},
-            {'trajectory_execution.allowed_goal_duration_margin': 1.0},
-            # CRITICAL FIX: Explicitly configure planning scene monitor
-            {'planning_scene_monitor_options.robot_description': 'robot_description'},
-            {'planning_scene_monitor_options.joint_state_topic': '/joint_states'},
-            {'planning_scene_monitor_options.attached_collision_object_topic': '/attached_collision_object'},
-            {'planning_scene_monitor_options.publish_planning_scene_topic': '/publish_planning_scene'},
-            {'planning_scene_monitor_options.monitored_planning_scene_topic': '/monitored_planning_scene'},
-            {'planning_scene_monitor_options.wait_for_initial_state_timeout': 10.0},
-        ],
-        # ✅ CRITICAL: Remap joint_states to ensure it's received!
-        remappings=[
-            ('/joint_states', '/joint_states'),
         ],
     )
  
-    # RViz - WITH DELAY FOR HARDWARE MODE
-    # ✅ Delay RViz startup to ensure move_group has planning scene ready
+    # RViz
     start_rviz_node_cmd = Node(
         condition=IfCondition(use_rviz),
         package="rviz2",
@@ -125,16 +108,8 @@ def generate_launch_description():
             moveit_config.planning_pipelines,
             moveit_config.robot_description_kinematics,
             moveit_config.joint_limits,
-            {'use_sim_time': use_sim_time}  # ✅ FIXED: Now uses LaunchConfiguration
+            {'use_sim_time': use_sim_time}
         ],
-    )
-    
-    # Delay RViz for hardware mode to let planning scene initialize
-    delayed_rviz = RegisterEventHandler(
-        event_handler=OnProcessStart(
-            target_action=start_move_group_node_cmd,
-            on_start=[TimerAction(period=3.0, actions=[start_rviz_node_cmd])]
-        )
     )
      
     exit_event_handler = RegisterEventHandler(
@@ -154,7 +129,7 @@ def generate_launch_description():
  
     # Add any actions
     ld.add_action(start_move_group_node_cmd)
-    ld.add_action(delayed_rviz)  # Use delayed version instead
+    ld.add_action(start_rviz_node_cmd)
      
     # Clean shutdown of RViz
     ld.add_action(exit_event_handler)

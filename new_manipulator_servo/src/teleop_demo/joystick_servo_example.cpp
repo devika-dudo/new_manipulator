@@ -19,7 +19,7 @@
 #include <map>
 
 // Configuration
-const std::string JOY_TOPIC = "/joy";
+const std::string JOY_TOPIC = "/joy2";
 const std::string TWIST_TOPIC = "/servo_node/delta_twist_cmds";
 const std::string JOINT_TOPIC = "/servo_node/delta_joint_cmds";
 const std::string GRIPPER_TOPIC = "/hand_controller/joint_trajectory";

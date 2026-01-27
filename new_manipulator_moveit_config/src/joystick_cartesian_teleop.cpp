@@ -21,7 +21,7 @@ public:
         this->declare_parameter("planning_group", "arm_group");
         this->declare_parameter("end_effector_link", "fake_link");
         this->declare_parameter("base_frame", "world");
-        this->declare_parameter("use_sim_time", true);
+        //this->declare_parameter("use_sim_time", true);
         
         planning_group_ = this->get_parameter("planning_group").as_string();
         end_effector_link_ = this->get_parameter("end_effector_link").as_string();

@@ -276,8 +276,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-3.14"
-      upper="3.14"
+      lower="-2.39"
+      upper="0.715"
       effort="0"
       velocity="0" />
   </joint>
@@ -660,7 +660,7 @@
    <joint name="joint_4">
      <command_interface name="position"/>
      <state_interface name="position">
-       <param name="initial_value">0.0</param>
+       <param name="initial_value">-2.39</param>
       </state_interface>
       <state_interface name="velocity"/>
    </joint>
