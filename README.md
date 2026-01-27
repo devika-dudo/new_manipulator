@@ -14,7 +14,7 @@ ros2 launch new_manipulator unified_launch.py use_sim_time:=false
 ros2 launch new_manipulator_moveit_config test.launch.py use_sim_time:=false
 ros2 launch new_manipulator servo_example.launch.py 
 
-
+ros2 run joy joy_node --ros-args -p device_id:=0 -r __node:=joy_node -r /joy:=/joy1
 ros2 run joy_pack joystick_serial_node
 c
 
