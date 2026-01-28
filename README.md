@@ -53,5 +53,14 @@ ros2 run joy_pack joystick_serial_node
 
 GRIPPER OPEN
 GRIPPER CLOSE
-
-
+ ros2 launch realsense2_camera rs_launch.py \
+  enable_depth:=false \
+  enable_infra:=false \
+  enable_infra1:=false \
+  enable_infra2:=false \
+  enable_gyro:=false \
+  enable_accel:=false \
+  color_fps:=30 \
+  color_width:=640 \
+  color_height:=480
+ ros2 run usb_cam usb_cam_node_exe   --ros-args   -p video_device:=/dev/video11   -p pixel_format:=yuyv2rgb   -p image_width:=640   -p image_height:=480   -p framerate:=30.0
