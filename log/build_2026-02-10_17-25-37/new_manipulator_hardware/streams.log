@@ -1,0 +1,63 @@
+[0.032s] Invoking command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake /home/devika/new_manipulator/src/new_manipulator_hardware -DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_hardware
+[0.191s] [0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+[0.191s]   Compatibility with CMake < 3.10 will be removed from a future version of
+[0.192s]   CMake.
+[0.192s] 
+[0.192s]   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+[0.192s]   to tell CMake that the project requires at least <min> but has been updated
+[0.192s]   to work with policies introduced by <max> or earlier.
+[0.192s] 
+[0.192s] [0m
+[0.698s] -- The C compiler identification is GNU 11.4.0
+[1.180s] -- The CXX compiler identification is GNU 11.4.0
+[1.203s] -- Detecting C compiler ABI info
+[1.347s] -- Detecting C compiler ABI info - done
+[1.380s] -- Check for working C compiler: /usr/bin/cc - skipped
+[1.381s] -- Detecting C compile features
+[1.382s] -- Detecting C compile features - done
+[1.407s] -- Detecting CXX compiler ABI info
+[1.545s] -- Detecting CXX compiler ABI info - done
+[1.577s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.578s] -- Detecting CXX compile features
+[1.579s] -- Detecting CXX compile features - done
+[1.597s] -- Found control_msgs: 4.8.0 (/opt/ros/humble/share/control_msgs/cmake)
+[1.979s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter
+[2.378s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[2.400s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[2.438s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[2.488s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.555s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.134s] -- Found hardware_interface: 2.53.0 (/opt/ros/humble/share/hardware_interface/cmake)
+[3.408s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[3.418s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[3.492s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.628s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")
+[3.634s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.671s] -- Found FastRTPS: /opt/ros/humble/include
+[3.677s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.698s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[3.727s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.750s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.878s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[3.880s] -- Found Threads: TRUE
+[4.006s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[4.253s] -- Added test 'copyright' to check source files copyright and LICENSE
+[4.261s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[4.262s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/devika/new_manipulator/src/new_manipulator_hardware/hardware/include>
+[4.262s] -- Configured cppcheck exclude dirs and/or files: 
+[4.266s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[4.267s] -- Configured cpplint exclude dirs and/or files: 
+[4.269s] -- Added test 'flake8' to check Python code syntax and style conventions
+[4.273s] -- Added test 'lint_cmake' to check CMake code style
+[4.276s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[4.281s] -- Added test 'uncrustify' to check C / C++ code style
+[4.281s] -- Configured uncrustify additional arguments: 
+[4.284s] -- Added test 'xmllint' to check XML markup files
+[4.295s] -- Configuring done (4.1s)
+[4.336s] -- Generating done (0.0s)
+[4.342s] -- Build files have been written to: /home/devika/new_manipulator/src/build/new_manipulator_hardware
+[4.363s] Invoked command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake /home/devika/new_manipulator/src/new_manipulator_hardware -DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_hardware
+[4.367s] Invoking command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake --build /home/devika/new_manipulator/src/build/new_manipulator_hardware -- -j8 -l8
+[4.568s] [ 50%] [32mBuilding CXX object CMakeFiles/new_manipulator_hardware.dir/hardware/microros_hardware.cpp.o[0m
+[35.882s] [100%] [1m[32mLinking CXX shared library libnew_manipulator_hardware.so[0m
+[37.567s] [100%] [0mBuilt target new_manipulator_hardware[0m

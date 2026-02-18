@@ -17,6 +17,8 @@
 #include <cmath>
 #include <chrono>
 #include <map>
+#include <std_msgs/msg/int16_multi_array.hpp>
+
 
 // Configuration
 const std::string JOY_TOPIC = "/joy2";
@@ -96,9 +98,9 @@ bool isJointButtonPressed(const std::vector<int>& buttons)
 {
   if (buttons.size() < 12) return false;
   
-  return (buttons[BUTTON_3] || buttons[BUTTON_4] || buttons[BUTTON_5] || buttons[BUTTON_6] ||
+  return (buttons[TRIGGER] || buttons[BUTTON_2] || buttons[BUTTON_3] || buttons[BUTTON_4] || buttons[BUTTON_5] || buttons[BUTTON_6] ||
           buttons[BUTTON_7] || buttons[BUTTON_8] || buttons[BUTTON_9] || buttons[BUTTON_10] ||
-          buttons[BUTTON_11]);
+          buttons[BUTTON_11] || buttons[BUTTON_12]);
 }
 
 /** Convert joystick to Cartesian commands */
@@ -120,8 +122,8 @@ void convertJoyToTwist(const std::vector<float>& axes,
   double throttle_normalized = (throttle_raw - AXIS_DEFAULTS.at(THROTTLE)) / 2.0;
   double throttle_deadbanded = applyDeadband(throttle_normalized - 0.5, THROTTLE_DEADBAND);
 
-  twist->twist.linear.x = stick_y;
-  twist->twist.linear.y = -stick_x;
+  twist->twist.linear.x = -stick_x;
+  twist->twist.linear.y = stick_y;
   twist->twist.linear.z = throttle_deadbanded;
   twist->twist.angular.x = hat_y;
   twist->twist.angular.y = -hat_x;
@@ -129,7 +131,7 @@ void convertJoyToTwist(const std::vector<float>& axes,
 }
 
 /** Update command frame with feedback */
-void updateCmdFrame(std::string& frame_name, const std::vector<int>& buttons, rclcpp::Logger logger)
+/**void updateCmdFrame(std::string& frame_name, const std::vector<int>& buttons, rclcpp::Logger logger)
 {
   static bool trigger_pressed_last = false;
   bool trigger_pressed_now = buttons[TRIGGER];
@@ -145,7 +147,7 @@ void updateCmdFrame(std::string& frame_name, const std::vector<int>& buttons, rc
   }
   
   trigger_pressed_last = trigger_pressed_now;
-}
+}**/
 
 namespace moveit_servo
 {
@@ -171,6 +173,8 @@ public:
     joint_pub_ = this->create_publisher<control_msgs::msg::JointJog>(JOINT_TOPIC, rclcpp::SystemDefaultsQoS());
     gripper_pub_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>(GRIPPER_TOPIC, rclcpp::SystemDefaultsQoS());
     collision_pub_ = this->create_publisher<moveit_msgs::msg::PlanningScene>("/planning_scene", rclcpp::SystemDefaultsQoS());
+    pwm_pub_ = this->create_publisher<std_msgs::msg::Int16MultiArray>(
+    "/motor_commands", rclcpp::SystemDefaultsQoS());
 
     servo_start_client_ = this->create_client<std_srvs::srv::Trigger>("/servo_node/start_servo");
     servo_start_client_->wait_for_service(std::chrono::seconds(1));
@@ -196,121 +200,137 @@ public:
     RCLCPP_INFO(this->get_logger(), "📡 Waiting for joystick...");
   }
 
-  void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
-  {
-    // Initialize timestamps on first message
-    if (!received_first_joy_msg_) {
-      last_command_time_ = this->now();
-      last_joint_command_time_ = this->now();
-      received_first_joy_msg_ = true;
-      RCLCPP_INFO(this->get_logger(), "✅ Joystick connected!");
-    }
-    
-    // Update frame toggle
-    updateCmdFrame(frame_to_publish_, msg->buttons, this->get_logger());
-    
-    // Handle gripper toggle (Button 2)
-    handleGripperToggle(msg->buttons);
-
-    // Check if we're in joint mode
-    bool joint_mode = isJointButtonPressed(msg->buttons);
-    
-    if (!joint_mode)
-    {
-      // CARTESIAN MODE
-      last_command_time_ = this->now();
-      
-      auto twist_msg = std::make_unique<geometry_msgs::msg::TwistStamped>();
-      convertJoyToTwist(msg->axes, twist_msg);
-      
-      // Apply smooth ramping
-      current_velocity_.linear_x = applyRamping(current_velocity_.linear_x, twist_msg->twist.linear.x, MAX_DELTA);
-      current_velocity_.linear_y = applyRamping(current_velocity_.linear_y, twist_msg->twist.linear.y, MAX_DELTA);
-      current_velocity_.linear_z = applyRamping(current_velocity_.linear_z, twist_msg->twist.linear.z, MAX_DELTA);
-      current_velocity_.angular_x = applyRamping(current_velocity_.angular_x, twist_msg->twist.angular.x, MAX_DELTA);
-      current_velocity_.angular_y = applyRamping(current_velocity_.angular_y, twist_msg->twist.angular.y, MAX_DELTA);
-      current_velocity_.angular_z = applyRamping(current_velocity_.angular_z, twist_msg->twist.angular.z, MAX_DELTA);
-      
-      twist_msg->twist.linear.x = current_velocity_.linear_x;
-      twist_msg->twist.linear.y = current_velocity_.linear_y;
-      twist_msg->twist.linear.z = current_velocity_.linear_z;
-      twist_msg->twist.angular.x = current_velocity_.angular_x;
-      twist_msg->twist.angular.y = current_velocity_.angular_y;
-      twist_msg->twist.angular.z = current_velocity_.angular_z;
-      
-      twist_msg->header.frame_id = frame_to_publish_;
-      twist_msg->header.stamp = this->now();
-      twist_pub_->publish(std::move(twist_msg));
-    }
-    else
-    {
-      // JOINT MODE - Send unitless commands (0.0 to 1.0 range)
-      current_velocity_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
-      
-      auto joint_msg = std::make_unique<control_msgs::msg::JointJog>();
-      
-      // Check if we have enough buttons (need at least 12 for 4 joint pairs)
-      if (msg->buttons.size() < 12) {
-        RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 5000,
-                            "⚠️  Not enough buttons! Have %zu, need 12", msg->buttons.size());
-        return;
-      }
-      
-      // Joint 1: Buttons 3 and 4
-      double j1_vel = static_cast<double>(msg->buttons[BUTTON_3] - msg->buttons[BUTTON_4]);
-      joint_msg->joint_names.push_back("joint_1");
-      joint_msg->velocities.push_back(j1_vel);
-      
-      // Joint 2: Buttons 5 and 6
-      double j2_vel = static_cast<double>(msg->buttons[BUTTON_5] - msg->buttons[BUTTON_6]);
-      joint_msg->joint_names.push_back("joint_2");
-      joint_msg->velocities.push_back(j2_vel);
-      
-      // Joint 3: Buttons 7 and 8
-      double j3_vel = static_cast<double>(msg->buttons[BUTTON_7] - msg->buttons[BUTTON_8]);
-      joint_msg->joint_names.push_back("joint_3");
-      joint_msg->velocities.push_back(j3_vel);
-      
-      // Joint 4: Buttons 9 and 10
-      double j4_vel = static_cast<double>(msg->buttons[BUTTON_9] - msg->buttons[BUTTON_10]);
-      joint_msg->joint_names.push_back("joint_4");
-      joint_msg->velocities.push_back(j4_vel);
-      
-      // Joint 5: Buttons 11 only (no button 12 available)
-      // Hold button 11 to move forward in positive direction
-      double j5_vel = static_cast<double>(msg->buttons[BUTTON_11]);
-      joint_msg->joint_names.push_back("joint_5");
-      joint_msg->velocities.push_back(j5_vel);
-      
-      // CRITICAL: Add fake_joint (required by arm_group_controller)
-      joint_msg->joint_names.push_back("fake_joint");
-      joint_msg->velocities.push_back(0.0);
-      
-      // ALWAYS publish - even zeros (important for servo to know we're active)
-      joint_msg->header.stamp = this->now();
-      joint_msg->header.frame_id = "base_link";
-      
-      // Set duration as double (seconds) - critical for servo
-      joint_msg->duration = 0.1;  // 100ms
-      
-      joint_pub_->publish(std::move(joint_msg));
-      
-      // DEBUG: Print what we're sending
-      if (std::abs(j1_vel) > 0.01 || std::abs(j2_vel) > 0.01 || std::abs(j3_vel) > 0.01 || 
-          std::abs(j4_vel) > 0.01 || std::abs(j5_vel) > 0.01) {
-        RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 500,
-                            "📤 Joint cmd: [%.1f, %.1f, %.1f, %.1f, %.1f] + fake_joint",
-                            j1_vel, j2_vel, j3_vel, j4_vel, j5_vel);
-      }
-      
-      // Update last joint command time
-      last_joint_command_time_ = this->now();
-    }
+void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
+{
+  // Initialize timestamps on first message
+  if (!received_first_joy_msg_) {
+    last_command_time_ = this->now();
+    last_joint_command_time_ = this->now();
+    received_first_joy_msg_ = true;
+    RCLCPP_INFO(this->get_logger(), "✅ Joystick connected!");
   }
+  
+  // Check if we're in button mode (any button pressed)
+  bool button_mode = isJointButtonPressed(msg->buttons);
+  
+  if (!button_mode)
+  {
+    // ==========================================
+    // CARTESIAN MODE - Axes control
+    // ==========================================
+    last_command_time_ = this->now();
+    
+    auto twist_msg = std::make_unique<geometry_msgs::msg::TwistStamped>();
+    convertJoyToTwist(msg->axes, twist_msg);
+    
+    // Apply smooth ramping
+    current_velocity_.linear_x = applyRamping(current_velocity_.linear_x, twist_msg->twist.linear.x, MAX_DELTA);
+    current_velocity_.linear_y = applyRamping(current_velocity_.linear_y, twist_msg->twist.linear.y, MAX_DELTA);
+    current_velocity_.linear_z = applyRamping(current_velocity_.linear_z, twist_msg->twist.linear.z, MAX_DELTA);
+    current_velocity_.angular_x = applyRamping(current_velocity_.angular_x, twist_msg->twist.angular.x, MAX_DELTA);
+    current_velocity_.angular_y = applyRamping(current_velocity_.angular_y, twist_msg->twist.angular.y, MAX_DELTA);
+    current_velocity_.angular_z = applyRamping(current_velocity_.angular_z, twist_msg->twist.angular.z, MAX_DELTA);
+    
+    twist_msg->twist.linear.x = current_velocity_.linear_x;
+    twist_msg->twist.linear.y = current_velocity_.linear_y;
+    twist_msg->twist.linear.z = current_velocity_.linear_z;
+    twist_msg->twist.angular.x = current_velocity_.angular_x;
+    twist_msg->twist.angular.y = current_velocity_.angular_y;
+    twist_msg->twist.angular.z = current_velocity_.angular_z;
+    
+    twist_msg->header.frame_id = frame_to_publish_;
+    twist_msg->header.stamp = this->now();
+    twist_pub_->publish(std::move(twist_msg));
+    
+    // Send zero PWM when in cartesian mode
+    auto pwm_msg = std_msgs::msg::Int16MultiArray();
+    pwm_msg.data = {0, 0, 0, 0, 0, 0};
+    pwm_pub_->publish(pwm_msg);
+  }
+  else
+  {
+    // ==========================================
+    // BUTTON MODE - Direct PWM control
+    // ==========================================
+    
+    // Stop cartesian motion
+    current_velocity_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+    
+    // Send zero twist
+    auto twist_msg = std::make_unique<geometry_msgs::msg::TwistStamped>();
+    twist_msg->twist.linear.x = 0.0;
+    twist_msg->twist.linear.y = 0.0;
+    twist_msg->twist.linear.z = 0.0;
+    twist_msg->twist.angular.x = 0.0;
+    twist_msg->twist.angular.y = 0.0;
+    twist_msg->twist.angular.z = 0.0;
+    twist_msg->header.frame_id = frame_to_publish_;
+    twist_msg->header.stamp = this->now();
+    twist_pub_->publish(std::move(twist_msg));
+    
+    // Check if we have enough buttons
+    if (msg->buttons.size() < 12) {
+      RCLCPP_WARN_THROTTLE(this->get_logger(), *this->get_clock(), 5000,
+                          "⚠️  Not enough buttons! Have %zu, need 12", msg->buttons.size());
+      return;
+    }
+    
+    // Build PWM message - EXACTLY like your Python script
+    auto pwm_msg = std_msgs::msg::Int16MultiArray();
+    pwm_msg.data.resize(6);
+    
+    // Motor speeds (adjust these!)
+    const int MOTOR_SPEEDS[6] = {100, 100, 100, 100, 30, 20};
+    
+    // Process each motor (0-5)
+    for (int motor_idx = 0; motor_idx < 6; motor_idx++) {
+      int fwd_button = motor_idx * 2;      // 0, 2, 4, 6, 8, 10
+      int bwd_button = motor_idx * 2 + 1;  // 1, 3, 5, 7, 9, 11
+      
+      // Forward button pressed
+      if (msg->buttons[fwd_button]) {
+        pwm_msg.data[motor_idx] = MOTOR_SPEEDS[motor_idx];
+      }
+      // Backward button pressed
+      else if (msg->buttons[bwd_button]) {
+        pwm_msg.data[motor_idx] = -MOTOR_SPEEDS[motor_idx];
+      }
+      // No button pressed
+      else {
+        pwm_msg.data[motor_idx] = 0;
+      }
+    }
+    
+    // Publish PWM commands
+    pwm_pub_->publish(pwm_msg);
+    
+    // DEBUG: Log active motors
+    std::vector<std::string> active_motors;
+    for (int i = 0; i < 6; i++) {
+      if (pwm_msg.data[i] != 0) {
+        std::string direction = (pwm_msg.data[i] > 0) ? "FWD" : "REV";
+        active_motors.push_back("M" + std::to_string(i+1) + ":" + direction + 
+                               "(" + std::to_string(std::abs(pwm_msg.data[i])) + ")");
+      }
+    }
+    
+    if (!active_motors.empty()) {
+      std::string log_msg = "🎯 ";
+      for (size_t i = 0; i < active_motors.size(); i++) {
+        log_msg += active_motors[i];
+        if (i < active_motors.size() - 1) log_msg += " | ";
+      }
+      RCLCPP_INFO_THROTTLE(this->get_logger(), *this->get_clock(), 500, "%s", log_msg.c_str());
+    }
+    
+    // Update last command time
+    last_joint_command_time_ = this->now();
+  }
+}
   
   void handleGripperToggle(const std::vector<int>& buttons)
   {
-    bool button_2_pressed = buttons[BUTTON_2];
+    bool button_2_pressed = buttons[BUTTON_12];
     
     // Rising edge detection
     if (button_2_pressed && !button_2_was_pressed_) {
@@ -412,6 +432,8 @@ private:
   bool received_first_joy_msg_;
   
   rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
+  rclcpp::Publisher<std_msgs::msg::Int16MultiArray>::SharedPtr pwm_pub_;
+
   rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr twist_pub_;
   rclcpp::Publisher<control_msgs::msg::JointJog>::SharedPtr joint_pub_;
   rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr gripper_pub_;

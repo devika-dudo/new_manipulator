@@ -56,7 +56,15 @@ private:
   rclcpp::CallbackGroup::SharedPtr callback_group_;
   rclcpp::executors::SingleThreadedExecutor::SharedPtr executor_;
   std::thread executor_thread_;
-  
+    // Sync handshake
+  rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr sync_complete_sub_;
+  bool syncing_to_position_;
+  std::vector<double> sync_positions_;  // position snapshot taken at mode switch
+
+  // Callback
+  void sync_complete_callback(const std_msgs::msg::Bool::SharedPtr msg);
+
+
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_state_sub_;
   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr teensy_command_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr mode_switch_sub_;

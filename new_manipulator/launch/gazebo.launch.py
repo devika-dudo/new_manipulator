@@ -48,7 +48,7 @@ def generate_launch_description():
         arguments=[
             '-entity', 'new_manipulator',
             '-topic', '/robot_description',
-            '-x', '0', '-y', '0', '-z', '0.27'
+            '-x', '0', '-y', '0', '-z', '0.0'
         ],
         output='screen',
         parameters=[{'use_sim_time': True}]

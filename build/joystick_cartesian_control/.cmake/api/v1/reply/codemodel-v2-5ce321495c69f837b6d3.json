@@ -1,0 +1,88 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-7d4145a9bf904e13432a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "joystick_cartesian_control",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "continuous_cartesian_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-continuous_cartesian_node-f468c5118adf375bbd0f.json",
+					"name" : "continuous_cartesian_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joystick_cartesian_control_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joystick_cartesian_control_uninstall-4f3a1fb4a9d46c255f80.json",
+					"name" : "joystick_cartesian_control_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "joystick_cartesian_node::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-joystick_cartesian_node-0a78b5c2aaf59022b846.json",
+					"name" : "joystick_cartesian_node",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-ceada771fbabaf97ec89.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/devika/new_manipulator/src/build/joystick_cartesian_control",
+		"source" : "/home/devika/new_manipulator/src/joystick_cartesian_control"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}

@@ -1,7 +1,9 @@
 import os
 import yaml
 from launch import LaunchDescription
-from launch_ros.actions import Node, ComposableNodeContainer, LoadComposableNodes
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
+from launch_ros.actions import Node, ComposableNodeContainer
 from launch_ros.descriptions import ComposableNode
 from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
@@ -25,6 +27,16 @@ def load_yaml(package_name, file_path):
         return None
 
 def generate_launch_description():
+    # Declare use_sim_time argument at the very beginning
+    declare_use_sim_time = DeclareLaunchArgument(
+        'use_sim_time',
+        default_value='true',  # Default to true for Gazebo
+        description='Use simulation time'
+    )
+    
+    # Get the use_sim_time value
+    use_sim_time = LaunchConfiguration('use_sim_time')
+    
     # Get package directories
     pkg_share_manipulator = get_package_share_directory('new_manipulator')
     pkg_share_moveit_config = get_package_share_directory('new_manipulator_moveit_config')
@@ -48,11 +60,11 @@ def generate_launch_description():
     servo_yaml = load_yaml("new_manipulator_servo", "config/new_manipulator_simulated_config.yaml")
     servo_params = {"moveit_servo": servo_yaml}
     
-    # RViz node
+    # RViz node - ADD use_sim_time parameter
     rviz_config_file = os.path.join(
         get_package_share_directory("new_manipulator_servo"),
         "config",
-        "demo_rviz_config.rviz"
+        "demo_rviz_config_my_robot.rviz"
     )
     rviz_node = Node(
         package="rviz2",
@@ -63,15 +75,17 @@ def generate_launch_description():
         parameters=[
             moveit_config.robot_description,
             moveit_config.robot_description_semantic,
+            {"use_sim_time": use_sim_time},  # ← ADDED
         ],
     )
     
-    # Container with static TF AND joystick component
+    # Container - ADD use_sim_time parameter
     container = ComposableNodeContainer(
         name="moveit_servo_demo_container",
         namespace="/",
         package="rclcpp_components",
         executable="component_container_mt",
+        parameters=[{"use_sim_time": use_sim_time}],  # ← ADDED
         composable_node_descriptions=[
             ComposableNode(
                 package="tf2_ros",
@@ -87,19 +101,20 @@ def generate_launch_description():
                     "rotation.y": 0.0,
                     "rotation.z": 0.0,
                     "rotation.w": 1.0,
+                    "use_sim_time": use_sim_time,  # ← ADDED
                 }],
             ),
-            # Add joystick component here
             ComposableNode(
                 package="new_manipulator_servo",
                 plugin="moveit_servo::JoyToServoPub",
                 name="joy_to_servo",
+                parameters=[{"use_sim_time": use_sim_time}],  # ← ADDED
             ),
         ],
         output="screen",
     )
     
-    # Servo node (standalone)
+    # Servo node - CHANGE use_sim_time to use parameter
     servo_node = Node(
         package="new_manipulator_servo",
         executable="servo_node_main",
@@ -109,23 +124,25 @@ def generate_launch_description():
             moveit_config.robot_description,
             moveit_config.robot_description_semantic,
             moveit_config.robot_description_kinematics,
-            {"use_sim_time": False},
+            {"use_sim_time": use_sim_time},  # ← CHANGED from False
         ],
         output="screen",
     )
     
-# Joy node (hardware interface) - REMAPPED to /joy2
+    # Joy node - CHANGE use_sim_time to use parameter
     joy_node = Node(
-    package="joy",
-    executable="joy_node",
-    name="joy_node",
-    parameters=[{"use_sim_time": False}],  # Also changed to match servo_node
-    remappings=[
-        ('/joy', '/joy2'),  # ← This makes joy_node publish to /joy2
-    ],
-    output="screen",
-)
+        package="joy",
+        executable="joy_node",
+        name="joy_node",
+        parameters=[{"use_sim_time": use_sim_time}],  # ← CHANGED from False
+        remappings=[
+            ('/joy', '/joy2'),
+        ],
+        output="screen",
+    )
+    
     return LaunchDescription([
+        declare_use_sim_time,  # ← ADDED - must be first
         rviz_node,
         container,
         servo_node,

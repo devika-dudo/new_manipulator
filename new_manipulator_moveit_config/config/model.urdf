@@ -276,8 +276,8 @@
     <axis
       xyz="0 0 1" />
     <limit
-      lower="-2.39"
-      upper="0.715"
+      lower="-3.14"
+      upper="3.14"
       effort="0"
       velocity="0" />
   </joint>
@@ -375,7 +375,7 @@
   <child link="fake_link"/>
   <origin xyz="-0.06 -0.175 -0.2" rpy="-0.3 2.355 1.37"/>
   <axis xyz="0 0 1"/>  <!-- Yaw axis -->
-  <limit lower="-1.14159" upper="1.14159" effort="0" velocity="0"/>
+  <limit lower="-3.14159" upper="3.14159" effort="0" velocity="0"/>
 </joint>
 
 

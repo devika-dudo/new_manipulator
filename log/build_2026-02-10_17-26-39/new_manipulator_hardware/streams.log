@@ -1,0 +1,78 @@
+[0.039s] Invoking command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake /home/devika/new_manipulator/src/new_manipulator_hardware -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_hardware
+[0.178s] [0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+[0.178s]   Compatibility with CMake < 3.10 will be removed from a future version of
+[0.178s]   CMake.
+[0.178s] 
+[0.178s]   Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+[0.178s]   to tell CMake that the project requires at least <min> but has been updated
+[0.178s]   to work with policies introduced by <max> or earlier.
+[0.179s] 
+[0.179s] [0m
+[0.196s] -- Found control_msgs: 4.8.0 (/opt/ros/humble/share/control_msgs/cmake)
+[0.727s] -- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.733s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.743s] -- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.761s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.786s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.042s] -- Found hardware_interface: 2.53.0 (/opt/ros/humble/share/hardware_interface/cmake)
+[1.162s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.165s] -- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.207s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.223s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.255s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.272s] -- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+[1.296s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.394s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.585s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.590s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.590s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/devika/new_manipulator/src/new_manipulator_hardware/hardware/include>
+[1.590s] -- Configured cppcheck exclude dirs and/or files: 
+[1.592s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.593s] -- Configured cpplint exclude dirs and/or files: 
+[1.594s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.596s] -- Added test 'lint_cmake' to check CMake code style
+[1.598s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[1.603s] -- Added test 'uncrustify' to check C / C++ code style
+[1.603s] -- Configured uncrustify additional arguments: 
+[1.605s] -- Added test 'xmllint' to check XML markup files
+[1.621s] -- Configuring done (1.4s)
+[1.799s] -- Generating done (0.2s)
+[1.804s] -- Build files have been written to: /home/devika/new_manipulator/src/build/new_manipulator_hardware
+[1.823s] Invoked command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake /home/devika/new_manipulator/src/new_manipulator_hardware -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_hardware
+[1.824s] Invoking command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake --build /home/devika/new_manipulator/src/build/new_manipulator_hardware -- -j8 -l8
+[2.076s] [100%] [0mBuilt target new_manipulator_hardware[0m
+[2.086s] Invoked command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake --build /home/devika/new_manipulator/src/build/new_manipulator_hardware -- -j8 -l8
+[2.210s] Invoking command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake --install /home/devika/new_manipulator/src/build/new_manipulator_hardware
+[2.333s] -- Install configuration: ""
+[2.333s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/new_manipulator_hardware.xml
+[2.334s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/libnew_manipulator_hardware.so
+[2.360s] -- Set non-toolchain portion of runtime path of "/home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/libnew_manipulator_hardware.so" to ""
+[2.361s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include
+[2.361s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include/new_manipulator_hardware
+[2.361s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include/new_manipulator_hardware/microros_hardware.hpp
+[2.362s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/new_manipulator_hardware/mode_switcher.py
+[2.363s] -- Up-to-date: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/new_manipulator_hardware.xml
+[2.363s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/config
+[2.364s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/config/controllers.yaml
+[2.367s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/library_path.sh
+[2.367s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/library_path.dsv
+[2.368s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/package_run_dependencies/new_manipulator_hardware
+[2.368s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/parent_prefix_path/new_manipulator_hardware
+[2.368s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/ament_prefix_path.sh
+[2.369s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/ament_prefix_path.dsv
+[2.369s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/path.sh
+[2.369s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/path.dsv
+[2.369s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.bash
+[2.370s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.sh
+[2.370s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.zsh
+[2.370s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.dsv
+[2.370s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/package.dsv
+[2.371s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/packages/new_manipulator_hardware
+[2.371s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/new_manipulator_hardware
+[2.371s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.371s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_libraries-extras.cmake
+[2.372s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.372s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/new_manipulator_hardwareConfig.cmake
+[2.372s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/new_manipulator_hardwareConfig-version.cmake
+[2.372s] -- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/package.xml
+[2.375s] Invoked command in '/home/devika/new_manipulator/src/build/new_manipulator_hardware' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /home/devika/.local/bin/cmake --install /home/devika/new_manipulator/src/build/new_manipulator_hardware

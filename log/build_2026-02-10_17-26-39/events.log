@@ -1,0 +1,1354 @@
+[0.000000] (-) TimerEvent: {}
+[0.001019] (gazebo_ros2_control) JobQueued: {'identifier': 'gazebo_ros2_control', 'dependencies': OrderedDict()}
+[0.001204] (joystick_cartesian_control) JobQueued: {'identifier': 'joystick_cartesian_control', 'dependencies': OrderedDict()}
+[0.001306] (new_manipulator_hardware) JobQueued: {'identifier': 'new_manipulator_hardware', 'dependencies': OrderedDict()}
+[0.001366] (new_manipulator_servo) JobQueued: {'identifier': 'new_manipulator_servo', 'dependencies': OrderedDict()}
+[0.001420] (new_manipulator) JobQueued: {'identifier': 'new_manipulator', 'dependencies': OrderedDict([('gazebo_ros2_control', '/home/devika/new_manipulator/src/install/gazebo_ros2_control')])}
+[0.001478] (new_manipulator_moveit_config) JobQueued: {'identifier': 'new_manipulator_moveit_config', 'dependencies': OrderedDict([('gazebo_ros2_control', '/home/devika/new_manipulator/src/install/gazebo_ros2_control'), ('new_manipulator', '/home/devika/new_manipulator/src/install/new_manipulator')])}
+[0.001538] (gazebo_ros2_control) JobStarted: {'identifier': 'gazebo_ros2_control'}
+[0.018271] (joystick_cartesian_control) JobStarted: {'identifier': 'joystick_cartesian_control'}
+[0.025399] (new_manipulator_hardware) JobStarted: {'identifier': 'new_manipulator_hardware'}
+[0.034288] (new_manipulator_servo) JobStarted: {'identifier': 'new_manipulator_servo'}
+[0.044569] (gazebo_ros2_control) JobProgress: {'identifier': 'gazebo_ros2_control', 'progress': 'cmake'}
+[0.046454] (gazebo_ros2_control) Command: {'cmd': ['/home/devika/.local/bin/cmake', '/home/devika/new_manipulator/src/gazebo_ros2_control', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5', '-DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/gazebo_ros2_control'], 'cwd': '/home/devika/new_manipulator/src/build/gazebo_ros2_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/gazebo_ros2_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[0.052594] (joystick_cartesian_control) JobProgress: {'identifier': 'joystick_cartesian_control', 'progress': 'cmake'}
+[0.055947] (joystick_cartesian_control) Command: {'cmd': ['/home/devika/.local/bin/cmake', '/home/devika/new_manipulator/src/joystick_cartesian_control', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5', '-DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/joystick_cartesian_control'], 'cwd': '/home/devika/new_manipulator/src/build/joystick_cartesian_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/joystick_cartesian_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[0.058341] (new_manipulator_hardware) JobProgress: {'identifier': 'new_manipulator_hardware', 'progress': 'cmake'}
+[0.060112] (new_manipulator_hardware) Command: {'cmd': ['/home/devika/.local/bin/cmake', '/home/devika/new_manipulator/src/new_manipulator_hardware', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5', '-DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_hardware'], 'cwd': '/home/devika/new_manipulator/src/build/new_manipulator_hardware', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/new_manipulator_hardware'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[0.066320] (new_manipulator_servo) JobProgress: {'identifier': 'new_manipulator_servo', 'progress': 'cmake'}
+[0.070812] (new_manipulator_servo) Command: {'cmd': ['/home/devika/.local/bin/cmake', '/home/devika/new_manipulator/src/new_manipulator_servo', '-DCMAKE_POLICY_VERSION_MINIMUM=3.5', '-DCMAKE_INSTALL_PREFIX=/home/devika/new_manipulator/src/install/new_manipulator_servo'], 'cwd': '/home/devika/new_manipulator/src/build/new_manipulator_servo', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/new_manipulator_servo'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[0.099698] (-) TimerEvent: {}
+[0.200149] (-) TimerEvent: {}
+[0.202734] (new_manipulator_hardware) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[0.203169] (new_manipulator_hardware) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[0.203364] (new_manipulator_hardware) StderrLine: {'line': b'  CMake.\n'}
+[0.203504] (new_manipulator_hardware) StderrLine: {'line': b'\n'}
+[0.203610] (new_manipulator_hardware) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[0.203718] (new_manipulator_hardware) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[0.203823] (new_manipulator_hardware) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[0.203927] (new_manipulator_hardware) StderrLine: {'line': b'\n'}
+[0.204040] (new_manipulator_hardware) StderrLine: {'line': b'\x1b[0m\n'}
+[0.204219] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[0.204405] (joystick_cartesian_control) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[0.204512] (joystick_cartesian_control) StderrLine: {'line': b'  CMake.\n'}
+[0.204615] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[0.204751] (joystick_cartesian_control) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[0.204882] (joystick_cartesian_control) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[0.204995] (joystick_cartesian_control) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[0.205224] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[0.205327] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[0.205431] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):\n'}
+[0.205574] (gazebo_ros2_control) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[0.205708] (gazebo_ros2_control) StderrLine: {'line': b'  CMake.\n'}
+[0.205818] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[0.205934] (gazebo_ros2_control) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[0.206047] (gazebo_ros2_control) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[0.206188] (gazebo_ros2_control) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[0.206312] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[0.206423] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[0.221697] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found control_msgs: 4.8.0 (/opt/ros/humble/share/control_msgs/cmake)\n'}
+[0.222052] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.222226] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.223287] (new_manipulator_servo) StdoutLine: {'line': b'-- Found moveit_common: 2.5.9 (/opt/ros/humble/share/moveit_common/cmake)\n'}
+[0.224631] (new_manipulator_servo) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.300272] (-) TimerEvent: {}
+[0.400686] (-) TimerEvent: {}
+[0.501282] (-) TimerEvent: {}
+[0.601706] (-) TimerEvent: {}
+[0.655369] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found angles: 1.15.0 (/opt/ros/humble/share/angles/cmake)\n'}
+[0.659098] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rclcpp: 16.0.17 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[0.660364] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found controller_manager: 2.53.0 (/opt/ros/humble/share/controller_manager/cmake)\n'}
+[0.701828] (-) TimerEvent: {}
+[0.730142] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.736713] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.737134] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.742169] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.749944] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.752772] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.753200] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.758126] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.768586] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.771418] (gazebo_ros2_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.771739] (joystick_cartesian_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.786636] (new_manipulator_hardware) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.798773] (joystick_cartesian_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.799168] (gazebo_ros2_control) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.801455] (new_manipulator_servo) StderrLine: {'line': b"\x1b[0mnew_manipulator_servo: You did not request a specific build type: Choosing 'Release' for maximum performance\x1b[0m\n"}
+[0.801916] (-) TimerEvent: {}
+[0.803031] (new_manipulator_servo) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)\n'}
+[0.803751] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ConfigExtras.cmake:9 (find_package):\n'}
+[0.803996] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[0.804162] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[0.804303] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[0.804432] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[0.804559] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.804684] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[0.804808] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[0.804933] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[0.805054] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[0.811484] (new_manipulator_hardware) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.842273] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread\n'}
+[0.878607] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.882921] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.902095] (-) TimerEvent: {}
+[0.912137] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.917210] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.929363] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.950788] (new_manipulator_servo) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.978181] (new_manipulator_servo) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.002231] (-) TimerEvent: {}
+[1.067215] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found hardware_interface: 2.53.0 (/opt/ros/humble/share/hardware_interface/cmake)\n'}
+[1.102399] (-) TimerEvent: {}
+[1.117141] (joystick_cartesian_control) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.181234] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.183781] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.187263] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.190379] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.202536] (-) TimerEvent: {}
+[1.221422] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.232040] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.234246] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found moveit_ros_planning_interface: 2.5.9 (/opt/ros/humble/share/moveit_ros_planning_interface/cmake)\n'}
+[1.234637] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ConfigExtras.cmake:9 (find_package):\n'}
+[1.234800] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.234930] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.235058] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.235204] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[1.235326] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.235443] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[1.235565] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[1.235678] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.235788] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.237741] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.248276] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.255438] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: date_time filesystem program_options system thread\n'}
+[1.270332] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.280510] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.287585] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.296850] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND\n'}
+[1.302678] (-) TimerEvent: {}
+[1.312698] (gazebo_ros2_control) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.321810] (new_manipulator_hardware) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.402840] (-) TimerEvent: {}
+[1.419574] (new_manipulator_hardware) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.456242] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_core/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[1.456515] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.456655] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.456781] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.456905] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[1.457030] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.457189] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)\n'}
+[1.457316] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[1.457441] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[1.457564] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[1.457688] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.457805] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[1.481737] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread\n'}
+[1.502993] (-) TimerEvent: {}
+[1.534451] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found control_toolbox: 3.6.3 (/opt/ros/humble/share/control_toolbox/cmake)\n'}
+[1.581478] (new_manipulator_servo) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[1.586311] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_core/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[1.586546] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.586665] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.586773] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.586882] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[1.586986] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.587108] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)\n'}
+[1.587229] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[1.587335] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[1.587437] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[1.587544] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.587652] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.588263] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/filters/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package):\n'}
+[1.588427] (gazebo_ros2_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.588551] (gazebo_ros2_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.588654] (gazebo_ros2_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.588755] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.588858] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.588963] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/filters/cmake/filtersConfig.cmake:41 (include)\n'}
+[1.589063] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/control_toolbox/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[1.589204] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/control_toolbox/cmake/control_toolboxConfig.cmake:41 (include)\n'}
+[1.589308] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:7 (find_package)\n'}
+[1.589405] (gazebo_ros2_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.589499] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.600290] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread\n'}
+[1.603151] (-) TimerEvent: {}
+[1.609800] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[1.614826] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found gazebo_dev: 3.9.0 (/opt/ros/humble/share/gazebo_dev/cmake)\n'}
+[1.615185] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[1.615507] (new_manipulator_hardware) StdoutLine: {'line': b'-- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/devika/new_manipulator/src/new_manipulator_hardware/hardware/include>\n'}
+[1.615709] (new_manipulator_hardware) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[1.617659] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[1.617955] (new_manipulator_hardware) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[1.618897] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[1.621186] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[1.623416] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[1.628203] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[1.628446] (new_manipulator_hardware) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[1.628737] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at /usr/lib/x86_64-linux-gnu/cmake/simbody/SimbodyTargets.cmake:7 (cmake_policy):\n'}
+[1.628882] (gazebo_ros2_control) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[1.628989] (gazebo_ros2_control) StderrLine: {'line': b'  CMake.\n'}
+[1.629115] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.629234] (gazebo_ros2_control) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[1.629339] (gazebo_ros2_control) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[1.629461] (gazebo_ros2_control) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[1.629570] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.629677] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/simbody/SimbodyConfig.cmake:105 (include)\n'}
+[1.629793] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:160 (find_package)\n'}
+[1.629899] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[1.630010] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[1.630139] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[1.630254] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.630427] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.630524] (new_manipulator_hardware) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[1.646042] (new_manipulator_hardware) StdoutLine: {'line': b'-- Configuring done (1.4s)\n'}
+[1.655440] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[1.658319] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.9 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[1.664499] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found parameter_traits: 0.6.0 (/opt/ros/humble/share/parameter_traits/cmake)\n'}
+[1.666156] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/dart/cmake/DARTFindBoost.cmake:20 (find_package):\n'}
+[1.666414] (gazebo_ros2_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.666551] (gazebo_ros2_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.666661] (gazebo_ros2_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.666758] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.666865] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.666975] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/share/dart/cmake/dart_dartComponent.cmake:6 (include)\n'}
+[1.667095] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/share/dart/cmake/DARTConfig.cmake:73 (include)\n'}
+[1.667205] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/share/dart/cmake/DARTConfig.cmake:133 (dart_traverse_components)\n'}
+[1.667329] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/share/dart/cmake/DARTConfig.cmake:181 (dart_package_init)\n'}
+[1.667444] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:166 (find_package)\n'}
+[1.667559] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[1.667679] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[1.667791] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[1.667908] (gazebo_ros2_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.668040] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.677038] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[1.703305] (-) TimerEvent: {}
+[1.803833] (-) TimerEvent: {}
+[1.820846] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/geometric_shapes/cmake/ConfigExtras.cmake:31 (find_package):\n'}
+[1.821258] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.821485] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.821762] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.821963] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[1.822206] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.822420] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/geometric_shapes/cmake/geometric_shapesConfig.cmake:41 (include)\n'}
+[1.822596] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[1.822794] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)\n'}
+[1.822985] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[1.823254] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[1.823470] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[1.823698] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.823896] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.824091] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found DART: /usr/include (Required is at least version "6.6") found components: dart\n'}
+[1.824326] (new_manipulator_hardware) StdoutLine: {'line': b'-- Generating done (0.2s)\n'}
+[1.828845] (new_manipulator_hardware) StdoutLine: {'line': b'-- Build files have been written to: /home/devika/new_manipulator/src/build/new_manipulator_hardware\n'}
+[1.835358] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem\n'}
+[1.845696] (new_manipulator_hardware) CommandEnded: {'returncode': 0}
+[1.848797] (new_manipulator_hardware) JobProgress: {'identifier': 'new_manipulator_hardware', 'progress': 'build'}
+[1.848867] (new_manipulator_hardware) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--build', '/home/devika/new_manipulator/src/build/new_manipulator_hardware', '--', '-j8', '-l8'], 'cwd': '/home/devika/new_manipulator/src/build/new_manipulator_hardware', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/new_manipulator_hardware'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[1.851184] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:197 (find_package):\n'}
+[1.851544] (gazebo_ros2_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.851770] (gazebo_ros2_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.851981] (gazebo_ros2_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.852234] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.852459] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.852649] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[1.852911] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[1.853319] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[1.853650] (gazebo_ros2_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.853874] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.873693] (new_manipulator_servo) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.903934] (-) TimerEvent: {}
+[1.907047] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4")\n'}
+[1.912640] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[1.926945] (joystick_cartesian_control) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[1.931751] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-math6\n'}
+[1.937455] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE...\n'}
+[1.952841] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found Ogre Ghadamon (1.9.0)\n'}
+[1.953816] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so\n'}
+[1.954441] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/OGRE/cmake/modules/FindOGRE.cmake:309 (find_package):\n'}
+[1.954726] (gazebo_ros2_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.954949] (gazebo_ros2_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.955206] (gazebo_ros2_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.955435] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.955641] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.955856] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:213 (find_package)\n'}
+[1.956062] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[1.956336] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[1.956548] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[1.956761] (gazebo_ros2_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.957001] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.964944] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /usr/share/OGRE/cmake/modules/FindOGRE.cmake:318 (find_package):\n'}
+[1.965235] (gazebo_ros2_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[1.965421] (gazebo_ros2_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[1.965577] (gazebo_ros2_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[1.965736] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[1.965900] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.966106] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:213 (find_package)\n'}
+[1.966278] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[1.966409] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[1.966525] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[1.966644] (gazebo_ros2_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.966770] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[1.972704] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_Paging...\n'}
+[1.973005] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so\n'}
+[1.973478] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_Terrain...\n'}
+[1.973654] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so\n'}
+[1.973862] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_Property...\n'}
+[1.973975] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so\n'}
+[1.974125] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_RTShaderSystem...\n'}
+[1.974230] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so\n'}
+[1.974354] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_Volume...\n'}
+[1.974520] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so\n'}
+[1.974752] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for OGRE_Overlay...\n'}
+[1.974873] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so\n'}
+[1.980068] (new_manipulator_servo) StdoutLine: {'line': b'-- Found rclcpp_lifecycle: 16.0.17 (/opt/ros/humble/share/rclcpp_lifecycle/cmake)\n'}
+[2.004084] (-) TimerEvent: {}
+[2.004535] (joystick_cartesian_control) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[2.016083] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/geometric_shapes/cmake/ConfigExtras.cmake:31 (find_package):\n'}
+[2.016355] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.016486] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.016608] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.016733] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.016852] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.016976] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/geometric_shapes/cmake/geometric_shapesConfig.cmake:41 (include)\n'}
+[2.017140] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.017291] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_core/cmake/moveit_coreConfig.cmake:41 (include)\n'}
+[2.017409] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.017528] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.017638] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[2.017750] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.017866] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.022753] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem\n'}
+[2.092105] (new_manipulator_servo) StdoutLine: {'line': b'-- library: /usr/lib/x86_64-linux-gnu/libcurl.so\n'}
+[2.101772] (new_manipulator_hardware) StdoutLine: {'line': b'[100%] \x1b[0mBuilt target new_manipulator_hardware\x1b[0m\n'}
+[2.104174] (-) TimerEvent: {}
+[2.110765] (new_manipulator_hardware) CommandEnded: {'returncode': 0}
+[2.111922] (new_manipulator_hardware) JobProgress: {'identifier': 'new_manipulator_hardware', 'progress': 'install'}
+[2.152042] (new_manipulator_servo) StdoutLine: {'line': b'-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target\n'}
+[2.204297] (-) TimerEvent: {}
+[2.235115] (new_manipulator_hardware) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--install', '/home/devika/new_manipulator/src/build/new_manipulator_hardware'], 'cwd': '/home/devika/new_manipulator/src/build/new_manipulator_hardware', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/new_manipulator_hardware'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[2.301216] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_planning/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.301485] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.301603] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.301715] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.301823] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[2.301934] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.302043] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning/cmake/moveit_ros_planningConfig.cmake:41 (include)\n'}
+[2.302192] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.302304] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.302409] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[2.302530] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.302639] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[2.304409] (-) TimerEvent: {}
+[2.311255] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono\n'}
+[2.358027] (new_manipulator_hardware) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[2.358377] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/new_manipulator_hardware.xml\n'}
+[2.359173] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/libnew_manipulator_hardware.so\n'}
+[2.373834] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_warehouse/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.374155] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.374426] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.374574] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.374717] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[2.374858] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.374997] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_warehouse/cmake/moveit_ros_warehouseConfig.cmake:41 (include)\n'}
+[2.375172] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.375322] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.375481] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[2.375618] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.375753] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[2.375888] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_planning/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.376049] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.376234] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.376374] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.376524] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.376635] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.376749] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning/cmake/moveit_ros_planningConfig.cmake:41 (include)\n'}
+[2.376864] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.376982] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.377111] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[2.377242] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.377354] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.383700] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread chrono\n'}
+[2.384046] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options\n'}
+[2.385734] (new_manipulator_hardware) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/libnew_manipulator_hardware.so" to ""\n'}
+[2.386094] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include\n'}
+[2.386372] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include/new_manipulator_hardware\n'}
+[2.386495] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/include/new_manipulator_hardware/microros_hardware.hpp\n'}
+[2.387016] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/lib/new_manipulator_hardware/mode_switcher.py\n'}
+[2.388509] (new_manipulator_hardware) StdoutLine: {'line': b'-- Up-to-date: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/new_manipulator_hardware.xml\n'}
+[2.388865] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/config\n'}
+[2.389013] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/config/controllers.yaml\n'}
+[2.392109] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/library_path.sh\n'}
+[2.392497] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/library_path.dsv\n'}
+[2.392983] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/package_run_dependencies/new_manipulator_hardware\n'}
+[2.393403] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/parent_prefix_path/new_manipulator_hardware\n'}
+[2.393671] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/ament_prefix_path.sh\n'}
+[2.393949] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/ament_prefix_path.dsv\n'}
+[2.394274] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/path.sh\n'}
+[2.394514] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/environment/path.dsv\n'}
+[2.394743] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.bash\n'}
+[2.394973] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.sh\n'}
+[2.395235] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.zsh\n'}
+[2.395447] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/local_setup.dsv\n'}
+[2.395682] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/package.dsv\n'}
+[2.395998] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/packages/new_manipulator_hardware\n'}
+[2.396315] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/ament_index/resource_index/hardware_interface__pluginlib__plugin/new_manipulator_hardware\n'}
+[2.396609] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[2.396832] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[2.397108] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[2.397325] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/new_manipulator_hardwareConfig.cmake\n'}
+[2.397533] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/cmake/new_manipulator_hardwareConfig-version.cmake\n'}
+[2.397751] (new_manipulator_hardware) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/new_manipulator_hardware/share/new_manipulator_hardware/package.xml\n'}
+[2.399978] (new_manipulator_hardware) CommandEnded: {'returncode': 0}
+[2.404834] (-) TimerEvent: {}
+[2.430232] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_move_group/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.430586] (joystick_cartesian_control) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.430795] (joystick_cartesian_control) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.431192] (joystick_cartesian_control) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.431520] (joystick_cartesian_control) StderrLine: {'line': b'\n'}
+[2.431783] (joystick_cartesian_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.432031] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_move_group/cmake/moveit_ros_move_groupConfig.cmake:41 (include)\n'}
+[2.432364] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.433236] (joystick_cartesian_control) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.433544] (joystick_cartesian_control) StderrLine: {'line': b'  CMakeLists.txt:11 (find_package)\n'}
+[2.433805] (joystick_cartesian_control) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.434053] (joystick_cartesian_control) StderrLine: {'line': b'\x1b[0m\n'}
+[2.438745] (joystick_cartesian_control) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread\n'}
+[2.447272] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_warehouse/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.447652] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.447934] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.448230] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.448495] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.448748] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.448999] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_warehouse/cmake/moveit_ros_warehouseConfig.cmake:41 (include)\n'}
+[2.449303] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.449560] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.449814] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[2.450088] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.450374] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.455232] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: thread system filesystem regex date_time program_options\n'}
+[2.462047] (new_manipulator_hardware) JobEnded: {'identifier': 'new_manipulator_hardware', 'rc': 0}
+[2.481189] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.483335] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-transport8 -- found version 8.2.1\n'}
+[2.484681] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-transport8\n'}
+[2.485922] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/moveit_ros_move_group/cmake/ConfigExtras.cmake:3 (find_package):\n'}
+[2.486381] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.486651] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.486893] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.487125] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.487373] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.487590] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_move_group/cmake/moveit_ros_move_groupConfig.cmake:41 (include)\n'}
+[2.487804] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package)\n'}
+[2.488012] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/moveit_ros_planning_interface/cmake/moveit_ros_planning_interfaceConfig.cmake:41 (include)\n'}
+[2.488274] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:33 (find_package)\n'}
+[2.488492] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.488746] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.494906] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: system filesystem date_time program_options thread\n'}
+[2.504979] (-) TimerEvent: {}
+[2.527565] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3")\n'}
+[2.551329] (gazebo_ros2_control) StdoutLine: {'line': b'-- Config-file not installed for ZeroMQ -- checking for pkg-config\n'}
+[2.559902] (gazebo_ros2_control) StdoutLine: {'line': b"-- Checking for module 'libzmq >= 4'\n"}
+[2.561600] (new_manipulator_servo) StdoutLine: {'line': b'-- Found control_msgs: 4.8.0 (/opt/ros/humble/share/control_msgs/cmake)\n'}
+[2.598743] (gazebo_ros2_control) StdoutLine: {'line': b'--   Found libzmq, version 4.3.4\n'}
+[2.605131] (-) TimerEvent: {}
+[2.612398] (new_manipulator_servo) StdoutLine: {'line': b'-- Found control_toolbox: 3.6.3 (/opt/ros/humble/share/control_toolbox/cmake)\n'}
+[2.670667] (joystick_cartesian_control) StdoutLine: {'line': b'-- Configuring done (2.5s)\n'}
+[2.705295] (-) TimerEvent: {}
+[2.732432] (gazebo_ros2_control) StdoutLine: {'line': b"-- Checking for module 'uuid'\n"}
+[2.755916] (joystick_cartesian_control) StdoutLine: {'line': b'-- Generating done (0.1s)\n'}
+[2.768777] (joystick_cartesian_control) StdoutLine: {'line': b'-- Build files have been written to: /home/devika/new_manipulator/src/build/joystick_cartesian_control\n'}
+[2.771108] (gazebo_ros2_control) StdoutLine: {'line': b'--   Found uuid, version 2.37.2\n'}
+[2.784226] (new_manipulator_servo) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[2.787747] (new_manipulator_servo) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)\n'}
+[2.788226] (joystick_cartesian_control) CommandEnded: {'returncode': 0}
+[2.790169] (joystick_cartesian_control) JobProgress: {'identifier': 'joystick_cartesian_control', 'progress': 'build'}
+[2.790399] (joystick_cartesian_control) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--build', '/home/devika/new_manipulator/src/build/joystick_cartesian_control', '--', '-j8', '-l8'], 'cwd': '/home/devika/new_manipulator/src/build/joystick_cartesian_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/joystick_cartesian_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[2.791658] (new_manipulator_servo) StdoutLine: {'line': b'-- Found ros_testing: 0.4.0 (/opt/ros/humble/share/ros_testing/cmake)\n'}
+[2.793428] (new_manipulator_servo) StdoutLine: {'line': b'-- Found launch_testing_ament_cmake: 1.0.13 (/opt/ros/humble/share/launch_testing_ament_cmake/cmake)\n'}
+[2.794982] (new_manipulator_servo) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[2.796701] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:52 (find_package):\n'}
+[2.797037] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules\n'}
+[2.797295] (new_manipulator_servo) StderrLine: {'line': b'  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use\n'}
+[2.797524] (new_manipulator_servo) StderrLine: {'line': b'  the cmake_policy command to set the policy and suppress this warning.\n'}
+[2.797727] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.797934] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.798172] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/launch_testing_ament_cmake/cmake/launch_testing_ament_cmake-extras.cmake:18 (find_package)\n'}
+[2.798403] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/launch_testing_ament_cmake/cmake/launch_testing_ament_cmakeConfig.cmake:41 (include)\n'}
+[2.798628] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/ros_testing/cmake/ros_testing-extras.cmake:15 (find_package)\n'}
+[2.798829] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/ros_testing/cmake/ros_testingConfig.cmake:41 (include)\n'}
+[2.799019] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:211 (find_package)\n'}
+[2.799253] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.799465] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.805455] (-) TimerEvent: {}
+[2.841944] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:140 (find_package):\n'}
+[2.842423] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules\n'}
+[2.842694] (new_manipulator_servo) StderrLine: {'line': b'  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use\n'}
+[2.842928] (new_manipulator_servo) StderrLine: {'line': b'  the cmake_policy command to set the policy and suppress this warning.\n'}
+[2.843222] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.843440] (new_manipulator_servo) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[2.843634] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/launch_testing_ament_cmake/cmake/launch_testing_ament_cmake-extras.cmake:18 (find_package)\n'}
+[2.843832] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/launch_testing_ament_cmake/cmake/launch_testing_ament_cmakeConfig.cmake:41 (include)\n'}
+[2.844025] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/ros_testing/cmake/ros_testing-extras.cmake:15 (find_package)\n'}
+[2.844261] (new_manipulator_servo) StderrLine: {'line': b'  /opt/ros/humble/share/ros_testing/cmake/ros_testingConfig.cmake:41 (include)\n'}
+[2.844469] (new_manipulator_servo) StderrLine: {'line': b'  CMakeLists.txt:211 (find_package)\n'}
+[2.844658] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.844854] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.847600] (new_manipulator_servo) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.847943] (new_manipulator_servo) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[2.848206] (new_manipulator_servo) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[2.850718] (new_manipulator_servo) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at CMakeLists.txt:212 (find_package):\n'}
+[2.851064] (new_manipulator_servo) StderrLine: {'line': b'  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake\n'}
+[2.851361] (new_manipulator_servo) StderrLine: {'line': b'  --help-policy CMP0167" for policy details.  Use the cmake_policy command to\n'}
+[2.851576] (new_manipulator_servo) StderrLine: {'line': b'  set the policy and suppress this warning.\n'}
+[2.851784] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.851998] (new_manipulator_servo) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[2.852242] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.855138] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[2.855573] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-msgs5\n'}
+[2.858602] (new_manipulator_servo) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found version "1.74.0") found components: filesystem\n'}
+[2.901817] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.905607] (-) TimerEvent: {}
+[2.919474] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[2.921946] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[2.922383] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3\n'}
+[2.923146] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for dlfcn.h - found\n'}
+[2.923397] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for libdl - found\n'}
+[2.946769] (new_manipulator_servo) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/humble/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[2.950562] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for <ignition-common3> component [graphics]\n'}
+[2.951017] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at /opt/ros/humble/src/gtest_vendor/CMakeLists.txt:2 (cmake_minimum_required):\n'}
+[2.951216] (new_manipulator_servo) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[2.951395] (new_manipulator_servo) StderrLine: {'line': b'  CMake.\n'}
+[2.951510] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.951651] (new_manipulator_servo) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[2.951799] (new_manipulator_servo) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[2.951948] (new_manipulator_servo) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[2.952151] (new_manipulator_servo) StderrLine: {'line': b'\n'}
+[2.952267] (new_manipulator_servo) StderrLine: {'line': b'\x1b[0m\n'}
+[2.952927] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-common3-graphics -- found version 3.14.0\n'}
+[2.953406] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-common3-graphics\n'}
+[2.954325] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[2.959582] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-fuel_tools4 -- found version 4.4.0\n'}
+[2.959953] (gazebo_ros2_control) StdoutLine: {'line': b'-- Searching for dependencies of ignition-fuel_tools4\n'}
+[3.005741] (-) TimerEvent: {}
+[3.027711] (new_manipulator_servo) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[3.030867] (new_manipulator_servo) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/devika/new_manipulator/src/new_manipulator_servo/include\n'}
+[3.031158] (new_manipulator_servo) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[3.032347] (new_manipulator_servo) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.033650] (new_manipulator_servo) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[3.034759] (new_manipulator_servo) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.039527] (new_manipulator_servo) StdoutLine: {'line': b'-- Configuring done (2.8s)\n'}
+[3.042368] (joystick_cartesian_control) StdoutLine: {'line': b'[100%] \x1b[0mBuilt target joystick_cartesian_node\x1b[0m\n'}
+[3.042602] (joystick_cartesian_control) StdoutLine: {'line': b'[100%] \x1b[0mBuilt target continuous_cartesian_node\x1b[0m\n'}
+[3.044861] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0mCMake Deprecation Warning at /usr/lib/x86_64-linux-gnu/cmake/jsoncpp/jsoncppConfig.cmake:2 (cmake_policy):\n'}
+[3.045085] (gazebo_ros2_control) StderrLine: {'line': b'  Compatibility with CMake < 3.10 will be removed from a future version of\n'}
+[3.045197] (gazebo_ros2_control) StderrLine: {'line': b'  CMake.\n'}
+[3.045333] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[3.045477] (gazebo_ros2_control) StderrLine: {'line': b'  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax\n'}
+[3.045606] (gazebo_ros2_control) StderrLine: {'line': b'  to tell CMake that the project requires at least <min> but has been updated\n'}
+[3.045747] (gazebo_ros2_control) StderrLine: {'line': b'  to work with policies introduced by <max> or earlier.\n'}
+[3.045886] (gazebo_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.046016] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/share/cmake/ignition-cmake2/cmake2/FindJSONCPP.cmake:34 (find_package)\n'}
+[3.046176] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/ignition-fuel_tools4/ignition-fuel_tools4-config.cmake:94 (find_package)\n'}
+[3.046307] (gazebo_ros2_control) StderrLine: {'line': b'  /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:251 (find_package)\n'}
+[3.046440] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_dev-extras.cmake:3 (find_package)\n'}
+[3.046565] (gazebo_ros2_control) StderrLine: {'line': b'  /opt/ros/humble/share/gazebo_dev/cmake/gazebo_devConfig.cmake:41 (include)\n'}
+[3.046692] (gazebo_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:8 (find_package)\n'}
+[3.046822] (gazebo_ros2_control) StderrLine: {'line': b'\n'}
+[3.046963] (gazebo_ros2_control) StderrLine: {'line': b'\x1b[0m\n'}
+[3.051444] (joystick_cartesian_control) CommandEnded: {'returncode': 0}
+[3.052847] (joystick_cartesian_control) JobProgress: {'identifier': 'joystick_cartesian_control', 'progress': 'install'}
+[3.053296] (joystick_cartesian_control) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--install', '/home/devika/new_manipulator/src/build/joystick_cartesian_control'], 'cwd': '/home/devika/new_manipulator/src/build/joystick_cartesian_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/joystick_cartesian_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[3.061374] (gazebo_ros2_control) StdoutLine: {'line': b"-- Checking for module 'jsoncpp'\n"}
+[3.095834] (gazebo_ros2_control) StdoutLine: {'line': b'--   Found jsoncpp, version 1.9.5\n'}
+[3.105886] (-) TimerEvent: {}
+[3.173547] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found JSONCPP: TRUE\n'}
+[3.182925] (joystick_cartesian_control) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.183381] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/lib/joystick_cartesian_control/joystick_cartesian_node\n'}
+[3.189046] (joystick_cartesian_control) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/devika/new_manipulator/src/install/joystick_cartesian_control/lib/joystick_cartesian_control/joystick_cartesian_node" to ""\n'}
+[3.189439] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/lib/joystick_cartesian_control/continuous_cartesian_node\n'}
+[3.190484] (gazebo_ros2_control) StdoutLine: {'line': b"-- Checking for module 'libzip'\n"}
+[3.194811] (joystick_cartesian_control) StdoutLine: {'line': b'-- Set non-toolchain portion of runtime path of "/home/devika/new_manipulator/src/install/joystick_cartesian_control/lib/joystick_cartesian_control/continuous_cartesian_node" to ""\n'}
+[3.195210] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control//launch\n'}
+[3.206011] (-) TimerEvent: {}
+[3.306512] (-) TimerEvent: {}
+[3.326409] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control//launch/joystick_control.launch.py\n'}
+[3.331611] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/ament_index/resource_index/package_run_dependencies/joystick_cartesian_control\n'}
+[3.332217] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/ament_index/resource_index/parent_prefix_path/joystick_cartesian_control\n'}
+[3.332525] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/environment/ament_prefix_path.sh\n'}
+[3.332899] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/environment/ament_prefix_path.dsv\n'}
+[3.333319] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/environment/path.sh\n'}
+[3.333682] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/environment/path.dsv\n'}
+[3.333977] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/local_setup.bash\n'}
+[3.334353] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/local_setup.sh\n'}
+[3.334881] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/local_setup.zsh\n'}
+[3.335327] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/local_setup.dsv\n'}
+[3.335715] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/package.dsv\n'}
+[3.335992] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/ament_index/resource_index/packages/joystick_cartesian_control\n'}
+[3.336532] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/cmake/joystick_cartesian_controlConfig.cmake\n'}
+[3.336992] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/cmake/joystick_cartesian_controlConfig-version.cmake\n'}
+[3.337333] (joystick_cartesian_control) StdoutLine: {'line': b'-- Installing: /home/devika/new_manipulator/src/install/joystick_cartesian_control/share/joystick_cartesian_control/package.xml\n'}
+[3.339969] (joystick_cartesian_control) CommandEnded: {'returncode': 0}
+[3.359615] (joystick_cartesian_control) JobEnded: {'identifier': 'joystick_cartesian_control', 'rc': 0}
+[3.365658] (gazebo_ros2_control) StdoutLine: {'line': b'--   Found libzip, version 1.7.3\n'}
+[3.406671] (-) TimerEvent: {}
+[3.475251] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found ZIP: TRUE\n'}
+[3.475867] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-common3 -- found version 3.14.0\n'}
+[3.476477] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-math6 -- found version 6.15.1\n'}
+[3.477013] (gazebo_ros2_control) StdoutLine: {'line': b'-- Looking for ignition-msgs5 -- found version 5.8.1\n'}
+[3.498858] (gazebo_ros2_control) StdoutLine: {'line': b'-- Gazebo version: 11.10\n'}
+[3.500064] (gazebo_ros2_control) StdoutLine: {'line': b"-- Checking for module 'tbb'\n"}
+[3.506837] (-) TimerEvent: {}
+[3.546588] (gazebo_ros2_control) StdoutLine: {'line': b'--   Found tbb, version 2021.5.0\n'}
+[3.606987] (-) TimerEvent: {}
+[3.656045] (new_manipulator_servo) StdoutLine: {'line': b'-- Generating done (0.6s)\n'}
+[3.668295] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found gazebo_ros: 3.9.0 (/opt/ros/humble/share/gazebo_ros/cmake)\n'}
+[3.707160] (-) TimerEvent: {}
+[3.728039] (new_manipulator_servo) StdoutLine: {'line': b'-- Build files have been written to: /home/devika/new_manipulator/src/build/new_manipulator_servo\n'}
+[3.756812] (new_manipulator_servo) CommandEnded: {'returncode': 0}
+[3.758394] (new_manipulator_servo) JobProgress: {'identifier': 'new_manipulator_servo', 'progress': 'build'}
+[3.760284] (new_manipulator_servo) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--build', '/home/devika/new_manipulator/src/build/new_manipulator_servo', '--', '-j8', '-l8'], 'cwd': '/home/devika/new_manipulator/src/build/new_manipulator_servo', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/new_manipulator_servo'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[3.807299] (-) TimerEvent: {}
+[3.907752] (-) TimerEvent: {}
+[3.920397] (new_manipulator_servo) StdoutLine: {'line': b'[  2%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o\x1b[0m\n'}
+[3.923664] (new_manipulator_servo) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o\x1b[0m\n'}
+[3.923939] (new_manipulator_servo) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object CMakeFiles/servo_controller_input.dir/src/teleop_demo/joystick_servo_example.cpp.o\x1b[0m\n'}
+[3.924197] (new_manipulator_servo) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/fake_command_publisher.dir/test/publish_fake_jog_commands.cpp.o\x1b[0m\n'}
+[3.925668] (new_manipulator_servo) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib_parameters.dir/src/servo_parameters.cpp.o\x1b[0m\n'}
+[3.925966] (new_manipulator_servo) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib_parameters.dir/src/parameter_descriptor_builder.cpp.o\x1b[0m\n'}
+[4.007966] (-) TimerEvent: {}
+[4.071426] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found yaml_cpp_vendor: 8.0.2 (/opt/ros/humble/share/yaml_cpp_vendor/cmake)\n'}
+[4.108178] (-) TimerEvent: {}
+[4.208809] (-) TimerEvent: {}
+[4.309392] (-) TimerEvent: {}
+[4.409955] (-) TimerEvent: {}
+[4.510518] (-) TimerEvent: {}
+[4.611057] (-) TimerEvent: {}
+[4.711640] (-) TimerEvent: {}
+[4.746313] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found ament_cmake_gtest: 1.3.12 (/opt/ros/humble/share/ament_cmake_gtest/cmake)\n'}
+[4.753829] (gazebo_ros2_control) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[4.811786] (-) TimerEvent: {}
+[4.912177] (-) TimerEvent: {}
+[5.012616] (-) TimerEvent: {}
+[5.113110] (-) TimerEvent: {}
+[5.133083] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[5.213266] (-) TimerEvent: {}
+[5.289601] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[5.291435] (gazebo_ros2_control) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/devika/new_manipulator/src/gazebo_ros2_control/include\n'}
+[5.291754] (gazebo_ros2_control) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[5.297787] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[5.298179] (gazebo_ros2_control) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[5.302525] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[5.310004] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[5.310429] (gazebo_ros2_control) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[5.313444] (-) TimerEvent: {}
+[5.313851] (gazebo_ros2_control) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[5.323661] (gazebo_ros2_control) StdoutLine: {'line': b'-- Configuring done (5.1s)\n'}
+[5.413643] (-) TimerEvent: {}
+[5.514153] (-) TimerEvent: {}
+[5.614618] (-) TimerEvent: {}
+[5.715111] (-) TimerEvent: {}
+[5.815593] (-) TimerEvent: {}
+[5.916051] (-) TimerEvent: {}
+[6.016624] (-) TimerEvent: {}
+[6.117097] (-) TimerEvent: {}
+[6.217536] (-) TimerEvent: {}
+[6.317972] (-) TimerEvent: {}
+[6.418433] (-) TimerEvent: {}
+[6.518894] (-) TimerEvent: {}
+[6.619553] (-) TimerEvent: {}
+[6.720011] (-) TimerEvent: {}
+[6.820505] (-) TimerEvent: {}
+[6.920984] (-) TimerEvent: {}
+[7.021469] (-) TimerEvent: {}
+[7.121955] (-) TimerEvent: {}
+[7.222501] (-) TimerEvent: {}
+[7.322939] (-) TimerEvent: {}
+[7.423432] (-) TimerEvent: {}
+[7.523879] (-) TimerEvent: {}
+[7.624407] (-) TimerEvent: {}
+[7.628565] (gazebo_ros2_control) StdoutLine: {'line': b'-- Generating done (2.3s)\n'}
+[7.641956] (gazebo_ros2_control) StdoutLine: {'line': b'-- Build files have been written to: /home/devika/new_manipulator/src/build/gazebo_ros2_control\n'}
+[7.675282] (gazebo_ros2_control) CommandEnded: {'returncode': 0}
+[7.676557] (gazebo_ros2_control) JobProgress: {'identifier': 'gazebo_ros2_control', 'progress': 'build'}
+[7.678304] (gazebo_ros2_control) Command: {'cmd': ['/home/devika/.local/bin/cmake', '--build', '/home/devika/new_manipulator/src/build/gazebo_ros2_control', '--', '-j8', '-l8'], 'cwd': '/home/devika/new_manipulator/src/build/gazebo_ros2_control', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('LANGUAGE', 'en_IN:en'), ('USER', 'devika'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo/lib:/home/devika/new_manipulator/install/new_manipulator_hardware/lib:/home/devika/new_manipulator/install/gazebo_ros2_control/lib:/home/devika/microros_ws/install/micro_ros_agent/lib:/home/devika/microros_ws/install/micro_ros_msgs/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/home/devika'), ('OLDPWD', '/home/devika/new_manipulator'), ('DESKTOP_SESSION', 'ubuntu-xorg'), ('CONNEXTDDS_DIR', '/opt/rti.com/rti_connext_dds-6.0.1'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('NDDSHOME', '/opt/rti.com/rti_connext_dds-6.0.1'), ('SYSTEMD_EXEC_PID', '2267'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('QSYS_ROOTDIR', '/home/devika/intelFPGA_lite/20.1/quartus/sopc_builder/bin'), ('QT_QPA_PLATFORM_PLUGIN_PATH', '/usr/lib/x86_64-linux-gnu/qt5/plugins/platforms'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/devika/new_manipulator/install:/home/devika/microros_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'devika'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'devika'), ('TERM', 'xterm-256color'), ('GAZEBO_MODEL_PATH', ':/home/devika/ltrobot_ws/install/ltrobot/share/ltrobot'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/rti.com/rti_connext_dds-6.0.1/lib/x64Linux4gcc7.3.0:/opt/rti.com/rti_connext_dds-6.0.1/bin:/opt/ros/humble/bin:/home/devika/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin'), ('SESSION_MANAGER', 'local/devika:@/tmp/.ICE-unix/2248,unix/devika:/tmp/.ICE-unix/2248'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/9f156452_2086_400d_afeb_bdefb20ad5d7'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu-xorg'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.98'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu-xorg'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('CONNEXTDDS_ARCH', 'x64Linux4gcc7.3.0'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/devika/new_manipulator/src/build/gazebo_ros2_control'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu-xorg:/etc/xdg'), ('XDG_DATA_DIRS', '/usr/share/ubuntu-xorg:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/devika/microros_ws/install/micro_ros_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/devika/new_manipulator/install/new_manipulator_servo:/home/devika/new_manipulator/install/new_manipulator_moveit_config:/home/devika/new_manipulator/install/new_manipulator_hardware:/home/devika/new_manipulator/install/new_manipulator:/home/devika/new_manipulator/install/joystick_cartesian_control:/home/devika/new_manipulator/install/gazebo_ros2_control:/home/devika/microros_ws/install/micro_ros_setup:/home/devika/microros_ws/install/micro_ros_agent:/home/devika/microros_ws/install/micro_ros_msgs:/opt/ros/humble')]), 'shell': False}
+[7.724548] (-) TimerEvent: {}
+[7.824980] (-) TimerEvent: {}
+[7.840532] (new_manipulator_servo) StdoutLine: {'line': b'[ 18%] \x1b[1m\x1b[32mLinking CXX static library libgtest_main.a\x1b[0m\n'}
+[7.865798] (gazebo_ros2_control) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/gazebo_hardware_plugins.dir/src/gazebo_system.cpp.o\x1b[0m\n'}
+[7.867404] (gazebo_ros2_control) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/gazebo_ros2_control.dir/src/gazebo_ros2_control_plugin.cpp.o\x1b[0m\n'}
+[7.925174] (-) TimerEvent: {}
+[8.025732] (-) TimerEvent: {}
+[8.126172] (-) TimerEvent: {}
+[8.226580] (-) TimerEvent: {}
+[8.327010] (-) TimerEvent: {}
+[8.427520] (-) TimerEvent: {}
+[8.527951] (-) TimerEvent: {}
+[8.628405] (-) TimerEvent: {}
+[8.728867] (-) TimerEvent: {}
+[8.829427] (-) TimerEvent: {}
+[8.929918] (-) TimerEvent: {}
+[9.030441] (-) TimerEvent: {}
+[9.130881] (-) TimerEvent: {}
+[9.231346] (-) TimerEvent: {}
+[9.331776] (-) TimerEvent: {}
+[9.432185] (-) TimerEvent: {}
+[9.532608] (-) TimerEvent: {}
+[9.633119] (-) TimerEvent: {}
+[9.733561] (-) TimerEvent: {}
+[9.746327] (new_manipulator_servo) StdoutLine: {'line': b'[ 18%] \x1b[0mBuilt target gtest_main\x1b[0m\n'}
+[9.833742] (-) TimerEvent: {}
+[9.934227] (-) TimerEvent: {}
+[10.034830] (-) TimerEvent: {}
+[10.135513] (-) TimerEvent: {}
+[10.236143] (-) TimerEvent: {}
+[10.336653] (-) TimerEvent: {}
+[10.437132] (-) TimerEvent: {}
+[10.538221] (-) TimerEvent: {}
+[10.638672] (-) TimerEvent: {}
+[10.656216] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kmoveit_servo::JoyToServoPub::JoyToServoPub(const rclcpp::NodeOptions&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.656536] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:421:15:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmoveit_servo::JoyToServoPub::frame_to_publish_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[10.656735] (new_manipulator_servo) StderrLine: {'line': b'  421 |   std::string \x1b[01;35m\x1b[Kframe_to_publish_\x1b[m\x1b[K;\n'}
+[10.656890] (new_manipulator_servo) StderrLine: {'line': b'      |               \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.657314] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:408:8:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbool moveit_servo::JoyToServoPub::gripper_is_open_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[10.657667] (new_manipulator_servo) StderrLine: {'line': b'  408 |   bool \x1b[01;35m\x1b[Kgripper_is_open_\x1b[m\x1b[K;\n'}
+[10.657930] (new_manipulator_servo) StderrLine: {'line': b'      |        \x1b[01;35m\x1b[K^~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.658169] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:155:3:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreorder\x07-Wreorder\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[10.658380] (new_manipulator_servo) StderrLine: {'line': b'  155 |   \x1b[01;35m\x1b[KJoyToServoPub\x1b[m\x1b[K(const rclcpp::NodeOptions& options)\n'}
+[10.658572] (new_manipulator_servo) StderrLine: {'line': b'      |   \x1b[01;35m\x1b[K^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.689948] (new_manipulator_servo) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/logging.hpp:24\x1b[m\x1b[K,\n'}
+[10.690291] (new_manipulator_servo) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/client.hpp:40\x1b[m\x1b[K,\n'}
+[10.690475] (new_manipulator_servo) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:12\x1b[m\x1b[K:\n'}
+[10.690615] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:187:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kzero-length gnu_printf format string [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat-zero-length\x07-Wformat-zero-length\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[10.690788] (new_manipulator_servo) StderrLine: {'line': b'  187 |     RCLCPP_INFO(this->get_logger(), \x1b[01;35m\x1b[K""\x1b[m\x1b[K);\n'}
+[10.690950] (new_manipulator_servo) StderrLine: {'line': b'      |                                     \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[10.694205] (new_manipulator_servo) StderrLine: {'line': b'\x1b[01m\x1b[K/home/devika/new_manipulator/src/new_manipulator_servo/src/teleop_demo/joystick_servo_example.cpp:195:37:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kzero-length gnu_printf format string [\x1b[01;35m\x1b[K\x1b]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat-zero-length\x07-Wformat-zero-length\x1b]8;;\x07\x1b[m\x1b[K]\n'}
+[10.694520] (new_manipulator_servo) StderrLine: {'line': b'  195 |     RCLCPP_INFO(this->get_logger(), \x1b[01;35m\x1b[K""\x1b[m\x1b[K);\n'}
+[10.694673] (new_manipulator_servo) StderrLine: {'line': b'      |                                     \x1b[01;35m\x1b[K^~\x1b[m\x1b[K\n'}
+[10.738845] (-) TimerEvent: {}
+[10.839463] (-) TimerEvent: {}
+[10.939888] (-) TimerEvent: {}
+[11.040358] (-) TimerEvent: {}
+[11.140785] (-) TimerEvent: {}
+[11.241243] (-) TimerEvent: {}
+[11.341680] (-) TimerEvent: {}
+[11.442119] (-) TimerEvent: {}
+[11.542611] (-) TimerEvent: {}
+[11.643044] (-) TimerEvent: {}
+[11.743703] (-) TimerEvent: {}
+[11.844191] (-) TimerEvent: {}
+[11.944642] (-) TimerEvent: {}
+[12.045181] (-) TimerEvent: {}
+[12.145602] (-) TimerEvent: {}
+[12.246096] (-) TimerEvent: {}
+[12.346571] (-) TimerEvent: {}
+[12.447038] (-) TimerEvent: {}
+[12.547510] (-) TimerEvent: {}
+[12.647941] (-) TimerEvent: {}
+[12.748432] (-) TimerEvent: {}
+[12.794768] (new_manipulator_servo) StdoutLine: {'line': b'[ 21%] \x1b[1m\x1b[32mLinking CXX executable fake_command_publisher\x1b[0m\n'}
+[12.848629] (-) TimerEvent: {}
+[12.949130] (-) TimerEvent: {}
+[13.049635] (-) TimerEvent: {}
+[13.068155] (new_manipulator_servo) StdoutLine: {'line': b'[ 21%] \x1b[0mBuilt target fake_command_publisher\x1b[0m\n'}
+[13.149809] (-) TimerEvent: {}
+[13.250322] (-) TimerEvent: {}
+[13.350834] (-) TimerEvent: {}
+[13.451328] (-) TimerEvent: {}
+[13.551894] (-) TimerEvent: {}
+[13.652430] (-) TimerEvent: {}
+[13.752878] (-) TimerEvent: {}
+[13.853333] (-) TimerEvent: {}
+[13.953778] (-) TimerEvent: {}
+[14.054240] (-) TimerEvent: {}
+[14.154741] (-) TimerEvent: {}
+[14.255249] (-) TimerEvent: {}
+[14.355708] (-) TimerEvent: {}
+[14.456187] (-) TimerEvent: {}
+[14.556686] (-) TimerEvent: {}
+[14.657345] (-) TimerEvent: {}
+[14.757806] (-) TimerEvent: {}
+[14.858258] (-) TimerEvent: {}
+[14.958709] (-) TimerEvent: {}
+[15.059209] (-) TimerEvent: {}
+[15.159670] (-) TimerEvent: {}
+[15.260164] (-) TimerEvent: {}
+[15.360610] (-) TimerEvent: {}
+[15.461136] (-) TimerEvent: {}
+[15.561604] (-) TimerEvent: {}
+[15.662083] (-) TimerEvent: {}
+[15.762576] (-) TimerEvent: {}
+[15.863061] (-) TimerEvent: {}
+[15.963591] (-) TimerEvent: {}
+[16.064121] (-) TimerEvent: {}
+[16.164599] (-) TimerEvent: {}
+[16.265067] (-) TimerEvent: {}
+[16.365612] (-) TimerEvent: {}
+[16.466117] (-) TimerEvent: {}
+[16.566622] (-) TimerEvent: {}
+[16.667550] (-) TimerEvent: {}
+[16.768020] (-) TimerEvent: {}
+[16.868482] (-) TimerEvent: {}
+[16.968935] (-) TimerEvent: {}
+[17.069476] (-) TimerEvent: {}
+[17.170166] (-) TimerEvent: {}
+[17.270639] (-) TimerEvent: {}
+[17.371143] (-) TimerEvent: {}
+[17.471593] (-) TimerEvent: {}
+[17.572041] (-) TimerEvent: {}
+[17.672509] (-) TimerEvent: {}
+[17.773015] (-) TimerEvent: {}
+[17.873481] (-) TimerEvent: {}
+[17.974006] (-) TimerEvent: {}
+[18.074743] (-) TimerEvent: {}
+[18.175249] (-) TimerEvent: {}
+[18.275742] (-) TimerEvent: {}
+[18.376237] (-) TimerEvent: {}
+[18.476728] (-) TimerEvent: {}
+[18.577298] (-) TimerEvent: {}
+[18.677774] (-) TimerEvent: {}
+[18.778312] (-) TimerEvent: {}
+[18.878754] (-) TimerEvent: {}
+[18.979227] (-) TimerEvent: {}
+[19.079780] (-) TimerEvent: {}
+[19.180296] (-) TimerEvent: {}
+[19.280780] (-) TimerEvent: {}
+[19.381316] (-) TimerEvent: {}
+[19.481799] (-) TimerEvent: {}
+[19.582316] (-) TimerEvent: {}
+[19.682795] (-) TimerEvent: {}
+[19.783283] (-) TimerEvent: {}
+[19.883856] (-) TimerEvent: {}
+[19.984508] (-) TimerEvent: {}
+[20.084997] (-) TimerEvent: {}
+[20.185484] (-) TimerEvent: {}
+[20.285956] (-) TimerEvent: {}
+[20.386463] (-) TimerEvent: {}
+[20.486928] (-) TimerEvent: {}
+[20.587435] (-) TimerEvent: {}
+[20.666302] (new_manipulator_servo) StdoutLine: {'line': b'[ 24%] \x1b[1m\x1b[32mLinking CXX static library libgtest.a\x1b[0m\n'}
+[20.687640] (-) TimerEvent: {}
+[20.788135] (-) TimerEvent: {}
+[20.793938] (new_manipulator_servo) StdoutLine: {'line': b'[ 24%] \x1b[0mBuilt target gtest\x1b[0m\n'}
+[20.888299] (-) TimerEvent: {}
+[20.988769] (-) TimerEvent: {}
+[21.089317] (-) TimerEvent: {}
+[21.189790] (-) TimerEvent: {}
+[21.290253] (-) TimerEvent: {}
+[21.390704] (-) TimerEvent: {}
+[21.491193] (-) TimerEvent: {}
+[21.591742] (-) TimerEvent: {}
+[21.692178] (-) TimerEvent: {}
+[21.792642] (-) TimerEvent: {}
+[21.893102] (-) TimerEvent: {}
+[21.993560] (-) TimerEvent: {}
+[22.094053] (-) TimerEvent: {}
+[22.194591] (-) TimerEvent: {}
+[22.295143] (-) TimerEvent: {}
+[22.395672] (-) TimerEvent: {}
+[22.496211] (-) TimerEvent: {}
+[22.596814] (-) TimerEvent: {}
+[22.697427] (-) TimerEvent: {}
+[22.797899] (-) TimerEvent: {}
+[22.898353] (-) TimerEvent: {}
+[22.998832] (-) TimerEvent: {}
+[23.099436] (-) TimerEvent: {}
+[23.199978] (-) TimerEvent: {}
+[23.300521] (-) TimerEvent: {}
+[23.401004] (-) TimerEvent: {}
+[23.501524] (-) TimerEvent: {}
+[23.602138] (-) TimerEvent: {}
+[23.702610] (-) TimerEvent: {}
+[23.803094] (-) TimerEvent: {}
+[23.903527] (-) TimerEvent: {}
+[24.003966] (-) TimerEvent: {}
+[24.104443] (-) TimerEvent: {}
+[24.204917] (-) TimerEvent: {}
+[24.305476] (-) TimerEvent: {}
+[24.406011] (-) TimerEvent: {}
+[24.506571] (-) TimerEvent: {}
+[24.607148] (-) TimerEvent: {}
+[24.707658] (-) TimerEvent: {}
+[24.808120] (-) TimerEvent: {}
+[24.908548] (-) TimerEvent: {}
+[25.009137] (-) TimerEvent: {}
+[25.109665] (-) TimerEvent: {}
+[25.486268] (-) TimerEvent: {}
+[25.586688] (-) TimerEvent: {}
+[25.687207] (-) TimerEvent: {}
+[25.787731] (-) TimerEvent: {}
+[25.888255] (-) TimerEvent: {}
+[25.988789] (-) TimerEvent: {}
+[26.089352] (-) TimerEvent: {}
+[26.189897] (-) TimerEvent: {}
+[26.290465] (-) TimerEvent: {}
+[26.391012] (-) TimerEvent: {}
+[26.491547] (-) TimerEvent: {}
+[26.592237] (-) TimerEvent: {}
+[26.692678] (-) TimerEvent: {}
+[26.793318] (-) TimerEvent: {}
+[26.893829] (-) TimerEvent: {}
+[26.994383] (-) TimerEvent: {}
+[27.094846] (-) TimerEvent: {}
+[27.195226] (-) TimerEvent: {}
+[27.295633] (-) TimerEvent: {}
+[27.396149] (-) TimerEvent: {}
+[27.496670] (-) TimerEvent: {}
+[27.597180] (-) TimerEvent: {}
+[27.697673] (-) TimerEvent: {}
+[27.798218] (-) TimerEvent: {}
+[27.898733] (-) TimerEvent: {}
+[27.999589] (-) TimerEvent: {}
+[28.100193] (-) TimerEvent: {}
+[28.200750] (-) TimerEvent: {}
+[28.301323] (-) TimerEvent: {}
+[28.401878] (-) TimerEvent: {}
+[28.502486] (-) TimerEvent: {}
+[28.602997] (-) TimerEvent: {}
+[28.703579] (-) TimerEvent: {}
+[28.804112] (-) TimerEvent: {}
+[28.904622] (-) TimerEvent: {}
+[29.005143] (-) TimerEvent: {}
+[29.105612] (-) TimerEvent: {}
+[29.206112] (-) TimerEvent: {}
+[29.306559] (-) TimerEvent: {}
+[29.407008] (-) TimerEvent: {}
+[29.507528] (-) TimerEvent: {}
+[29.608107] (-) TimerEvent: {}
+[29.708654] (-) TimerEvent: {}
+[29.809181] (-) TimerEvent: {}
+[29.909671] (-) TimerEvent: {}
+[30.010200] (-) TimerEvent: {}
+[30.111199] (-) TimerEvent: {}
+[30.211705] (-) TimerEvent: {}
+[30.450573] (-) TimerEvent: {}
+[30.551026] (-) TimerEvent: {}
+[30.651581] (-) TimerEvent: {}
+[30.752185] (-) TimerEvent: {}
+[30.852659] (-) TimerEvent: {}
+[30.953169] (-) TimerEvent: {}
+[31.053653] (-) TimerEvent: {}
+[31.154134] (-) TimerEvent: {}
+[31.254695] (-) TimerEvent: {}
+[31.355044] (-) TimerEvent: {}
+[31.455519] (-) TimerEvent: {}
+[31.556031] (-) TimerEvent: {}
+[31.656577] (-) TimerEvent: {}
+[31.757135] (-) TimerEvent: {}
+[31.857682] (-) TimerEvent: {}
+[31.958190] (-) TimerEvent: {}
+[32.058759] (-) TimerEvent: {}
+[32.159447] (-) TimerEvent: {}
+[32.260020] (-) TimerEvent: {}
+[32.360663] (-) TimerEvent: {}
+[32.461260] (-) TimerEvent: {}
+[32.561778] (-) TimerEvent: {}
+[32.662222] (-) TimerEvent: {}
+[32.762773] (-) TimerEvent: {}
+[32.863442] (-) TimerEvent: {}
+[32.963955] (-) TimerEvent: {}
+[33.064520] (-) TimerEvent: {}
+[33.165131] (-) TimerEvent: {}
+[33.265646] (-) TimerEvent: {}
+[33.366156] (-) TimerEvent: {}
+[33.466580] (-) TimerEvent: {}
+[33.567010] (-) TimerEvent: {}
+[33.667570] (-) TimerEvent: {}
+[33.768054] (-) TimerEvent: {}
+[33.868567] (-) TimerEvent: {}
+[33.969038] (-) TimerEvent: {}
+[34.069640] (-) TimerEvent: {}
+[34.170336] (-) TimerEvent: {}
+[34.270862] (-) TimerEvent: {}
+[34.371323] (-) TimerEvent: {}
+[34.471842] (-) TimerEvent: {}
+[34.572416] (-) TimerEvent: {}
+[34.672906] (-) TimerEvent: {}
+[34.773438] (-) TimerEvent: {}
+[34.873892] (-) TimerEvent: {}
+[34.974390] (-) TimerEvent: {}
+[35.074883] (-) TimerEvent: {}
+[35.175419] (-) TimerEvent: {}
+[35.275950] (-) TimerEvent: {}
+[35.522796] (-) TimerEvent: {}
+[35.623324] (-) TimerEvent: {}
+[35.723904] (-) TimerEvent: {}
+[35.824353] (-) TimerEvent: {}
+[35.924759] (-) TimerEvent: {}
+[36.025211] (-) TimerEvent: {}
+[36.125676] (-) TimerEvent: {}
+[36.226180] (-) TimerEvent: {}
+[36.326699] (-) TimerEvent: {}
+[36.427200] (-) TimerEvent: {}
+[36.527890] (-) TimerEvent: {}
+[36.628499] (-) TimerEvent: {}
+[36.729063] (-) TimerEvent: {}
+[36.829519] (-) TimerEvent: {}
+[36.929919] (-) TimerEvent: {}
+[37.030345] (-) TimerEvent: {}
+[37.130789] (-) TimerEvent: {}
+[37.231394] (-) TimerEvent: {}
+[37.331953] (-) TimerEvent: {}
+[37.432752] (-) TimerEvent: {}
+[37.533172] (-) TimerEvent: {}
+[37.633606] (-) TimerEvent: {}
+[37.734016] (-) TimerEvent: {}
+[37.834478] (-) TimerEvent: {}
+[37.934903] (-) TimerEvent: {}
+[38.035759] (-) TimerEvent: {}
+[38.138914] (-) TimerEvent: {}
+[38.239395] (-) TimerEvent: {}
+[38.339846] (-) TimerEvent: {}
+[38.440364] (-) TimerEvent: {}
+[38.540902] (-) TimerEvent: {}
+[38.641461] (-) TimerEvent: {}
+[38.741909] (-) TimerEvent: {}
+[38.842339] (-) TimerEvent: {}
+[38.942798] (-) TimerEvent: {}
+[39.043364] (-) TimerEvent: {}
+[39.143979] (-) TimerEvent: {}
+[39.244487] (-) TimerEvent: {}
+[39.344952] (-) TimerEvent: {}
+[39.445493] (-) TimerEvent: {}
+[39.545957] (-) TimerEvent: {}
+[39.646447] (-) TimerEvent: {}
+[39.746871] (-) TimerEvent: {}
+[39.847377] (-) TimerEvent: {}
+[39.947799] (-) TimerEvent: {}
+[40.048248] (-) TimerEvent: {}
+[40.141270] (new_manipulator_servo) StdoutLine: {'line': b'[ 27%] \x1b[1m\x1b[32mLinking CXX shared library libmoveit_servo_lib_parameters.so\x1b[0m\n'}
+[40.148422] (-) TimerEvent: {}
+[40.248943] (-) TimerEvent: {}
+[40.349469] (-) TimerEvent: {}
+[40.449986] (-) TimerEvent: {}
+[40.550585] (-) TimerEvent: {}
+[40.651235] (-) TimerEvent: {}
+[40.751713] (-) TimerEvent: {}
+[40.852280] (-) TimerEvent: {}
+[40.952765] (-) TimerEvent: {}
+[41.053264] (-) TimerEvent: {}
+[41.132255] (new_manipulator_servo) StdoutLine: {'line': b'[ 27%] \x1b[0mBuilt target moveit_servo_lib_parameters\x1b[0m\n'}
+[41.153444] (-) TimerEvent: {}
+[41.169595] (new_manipulator_servo) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/test_servo_integration.dir/test/test_servo_interface.cpp.o\x1b[0m\n'}
+[41.170298] (new_manipulator_servo) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib.dir/src/enforce_limits.cpp.o\x1b[0m\n'}
+[41.170778] (new_manipulator_servo) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/test_servo_collision.dir/test/test_servo_collision.cpp.o\x1b[0m\n'}
+[41.171256] (new_manipulator_servo) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib.dir/src/collision_check.cpp.o\x1b[0m\n'}
+[41.174381] (new_manipulator_servo) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib.dir/src/servo.cpp.o\x1b[0m\n'}
+[41.180221] (new_manipulator_servo) StdoutLine: {'line': b'[ 43%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib.dir/src/servo_calcs.cpp.o\x1b[0m\n'}
+[41.181679] (new_manipulator_servo) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/moveit_servo_lib.dir/src/utilities.cpp.o\x1b[0m\n'}
+[41.254698] (-) TimerEvent: {}
+[41.356523] (-) TimerEvent: {}
+[41.457043] (-) TimerEvent: {}
+[41.557653] (-) TimerEvent: {}
+[41.662216] (-) TimerEvent: {}
+[41.762844] (-) TimerEvent: {}
+[41.863345] (-) TimerEvent: {}
+[41.968184] (-) TimerEvent: {}
+[42.068628] (-) TimerEvent: {}
+[42.171208] (-) TimerEvent: {}
+[42.271654] (-) TimerEvent: {}
+[42.372155] (-) TimerEvent: {}
+[42.472551] (-) TimerEvent: {}
+[42.572990] (-) TimerEvent: {}
+[42.673725] (-) TimerEvent: {}
+[42.774192] (-) TimerEvent: {}
+[42.875027] (-) TimerEvent: {}
+[42.979184] (-) TimerEvent: {}
+[43.079646] (-) TimerEvent: {}
+[43.180206] (-) TimerEvent: {}
+[43.280674] (-) TimerEvent: {}
+[43.381194] (-) TimerEvent: {}
+[43.420603] (new_manipulator_servo) StdoutLine: {'line': b'[ 48%] \x1b[1m\x1b[32mLinking CXX shared library libservo_controller_input.so\x1b[0m\n'}
+[43.483202] (-) TimerEvent: {}
+[43.583694] (-) TimerEvent: {}
+[43.684358] (-) TimerEvent: {}
+[43.784856] (-) TimerEvent: {}
+[43.887476] (-) TimerEvent: {}
+[43.988052] (-) TimerEvent: {}
+[44.088566] (-) TimerEvent: {}
+[44.193441] (-) TimerEvent: {}
+[44.293918] (-) TimerEvent: {}
+[44.394370] (-) TimerEvent: {}
+[44.497176] (-) TimerEvent: {}
+[44.597590] (-) TimerEvent: {}
+[44.698017] (-) TimerEvent: {}
+[44.798543] (-) TimerEvent: {}
+[44.899006] (-) TimerEvent: {}
+[45.003202] (-) TimerEvent: {}
+[45.103658] (-) TimerEvent: {}
+[45.204153] (-) TimerEvent: {}
+[45.304634] (-) TimerEvent: {}
+[45.405372] (-) TimerEvent: {}
+[45.505937] (-) TimerEvent: {}
+[45.606355] (-) TimerEvent: {}
+[45.706752] (-) TimerEvent: {}
+[45.740665] (new_manipulator_servo) StdoutLine: {'line': b'[ 48%] \x1b[0mBuilt target servo_controller_input\x1b[0m\n'}
+[45.808204] (-) TimerEvent: {}
+[45.908640] (-) TimerEvent: {}
+[46.012174] (-) TimerEvent: {}
+[46.112600] (-) TimerEvent: {}
+[46.213213] (-) TimerEvent: {}
+[46.313733] (-) TimerEvent: {}
+[46.414219] (-) TimerEvent: {}
+[46.516818] (-) TimerEvent: {}
+[46.617462] (-) TimerEvent: {}
+[46.721414] (-) TimerEvent: {}
+[46.824094] (-) TimerEvent: {}
+[46.924634] (-) TimerEvent: {}
+[46.932254] (gazebo_ros2_control) StdoutLine: {'line': b'[ 75%] \x1b[1m\x1b[32mLinking CXX shared library libgazebo_hardware_plugins.so\x1b[0m\n'}
+[47.024870] (-) TimerEvent: {}
+[47.125406] (-) TimerEvent: {}
+[47.228059] (-) TimerEvent: {}
+[47.329698] (-) TimerEvent: {}
+[47.430129] (-) TimerEvent: {}
+[47.533318] (-) TimerEvent: {}
+[47.633783] (-) TimerEvent: {}
+[47.734627] (-) TimerEvent: {}
+[47.838230] (-) TimerEvent: {}
+[47.941218] (-) TimerEvent: {}
+[48.041718] (-) TimerEvent: {}
+[48.142223] (-) TimerEvent: {}
+[48.242698] (-) TimerEvent: {}
+[48.346215] (-) TimerEvent: {}
+[48.446780] (-) TimerEvent: {}
+[48.547322] (-) TimerEvent: {}
+[48.647886] (-) TimerEvent: {}
+[48.749225] (-) TimerEvent: {}
+[48.853274] (-) TimerEvent: {}
+[48.953810] (-) TimerEvent: {}
+[49.054679] (-) TimerEvent: {}
+[49.159295] (-) TimerEvent: {}
+[49.260245] (-) TimerEvent: {}
+[49.360804] (-) TimerEvent: {}
+[49.463216] (-) TimerEvent: {}
+[49.563707] (-) TimerEvent: {}
+[49.668221] (-) TimerEvent: {}
+[49.768789] (-) TimerEvent: {}
+[49.869575] (-) TimerEvent: {}
+[49.878015] (gazebo_ros2_control) StdoutLine: {'line': b'[ 75%] \x1b[0mBuilt target gazebo_hardware_plugins\x1b[0m\n'}
+[49.969754] (-) TimerEvent: {}
+[50.070318] (-) TimerEvent: {}
+[50.178410] (-) TimerEvent: {}
+[50.278982] (-) TimerEvent: {}
+[50.380317] (-) TimerEvent: {}
+[50.480728] (-) TimerEvent: {}
+[50.581227] (-) TimerEvent: {}
+[50.681709] (-) TimerEvent: {}
+[50.782203] (-) TimerEvent: {}
+[50.882698] (-) TimerEvent: {}
+[50.983196] (-) TimerEvent: {}
+[51.083684] (-) TimerEvent: {}
+[51.184154] (-) TimerEvent: {}
+[51.284690] (-) TimerEvent: {}
+[51.385348] (-) TimerEvent: {}
+[51.485862] (-) TimerEvent: {}
+[51.586425] (-) TimerEvent: {}
+[51.686956] (-) TimerEvent: {}
+[51.787493] (-) TimerEvent: {}
+[51.888006] (-) TimerEvent: {}
+[51.988501] (-) TimerEvent: {}
+[52.089048] (-) TimerEvent: {}
+[52.189601] (-) TimerEvent: {}
+[52.290105] (-) TimerEvent: {}
+[52.390639] (-) TimerEvent: {}
+[52.491154] (-) TimerEvent: {}
+[52.591886] (-) TimerEvent: {}
+[52.692468] (-) TimerEvent: {}
+[52.793045] (-) TimerEvent: {}
+[52.893631] (-) TimerEvent: {}
+[52.994119] (-) TimerEvent: {}
+[53.094678] (-) TimerEvent: {}
+[53.195242] (-) TimerEvent: {}
+[53.295715] (-) TimerEvent: {}
+[53.396258] (-) TimerEvent: {}
+[53.496824] (-) TimerEvent: {}
+[53.597452] (-) TimerEvent: {}
+[53.697948] (-) TimerEvent: {}
+[53.798465] (-) TimerEvent: {}
+[53.898934] (-) TimerEvent: {}
+[53.999674] (-) TimerEvent: {}
+[54.100386] (-) TimerEvent: {}
+[54.200913] (-) TimerEvent: {}
+[54.301536] (-) TimerEvent: {}
+[54.402227] (-) TimerEvent: {}
+[54.502780] (-) TimerEvent: {}
+[54.603285] (-) TimerEvent: {}
+[54.703854] (-) TimerEvent: {}
+[54.804455] (-) TimerEvent: {}
+[54.904904] (-) TimerEvent: {}
+[55.005405] (-) TimerEvent: {}
+[55.105890] (-) TimerEvent: {}
+[55.206465] (-) TimerEvent: {}
+[55.665546] (-) TimerEvent: {}
+[55.765923] (-) TimerEvent: {}
+[55.866387] (-) TimerEvent: {}
+[55.966936] (-) TimerEvent: {}
+[56.067454] (-) TimerEvent: {}
+[56.167908] (-) TimerEvent: {}
+[56.268347] (-) TimerEvent: {}
+[56.368768] (-) TimerEvent: {}
+[56.469509] (-) TimerEvent: {}
+[56.570041] (-) TimerEvent: {}
+[56.670564] (-) TimerEvent: {}
+[56.771032] (-) TimerEvent: {}
+[56.871545] (-) TimerEvent: {}
+[56.971994] (-) TimerEvent: {}
+[57.072508] (-) TimerEvent: {}
+[57.172962] (-) TimerEvent: {}
+[57.273500] (-) TimerEvent: {}
+[57.373996] (-) TimerEvent: {}
+[57.474461] (-) TimerEvent: {}
+[57.574973] (-) TimerEvent: {}
+[57.675553] (-) TimerEvent: {}
+[57.776106] (-) TimerEvent: {}
+[57.876546] (-) TimerEvent: {}
+[57.977221] (-) TimerEvent: {}
+[58.077774] (-) TimerEvent: {}
+[58.178355] (-) TimerEvent: {}
+[58.278865] (-) TimerEvent: {}
+[58.379444] (-) TimerEvent: {}
+[58.479962] (-) TimerEvent: {}
+[58.580501] (-) TimerEvent: {}
+[58.680979] (-) TimerEvent: {}
+[58.781458] (-) TimerEvent: {}
+[58.881928] (-) TimerEvent: {}
+[58.982416] (-) TimerEvent: {}
+[59.083055] (-) TimerEvent: {}
+[59.183629] (-) TimerEvent: {}
+[59.284149] (-) TimerEvent: {}
+[59.384731] (-) TimerEvent: {}
+[59.485369] (-) TimerEvent: {}
+[59.585852] (-) TimerEvent: {}
+[59.686404] (-) TimerEvent: {}
+[59.786984] (-) TimerEvent: {}
+[59.887564] (-) TimerEvent: {}
+[59.988007] (-) TimerEvent: {}
+[60.088718] (-) TimerEvent: {}
+[60.189236] (-) TimerEvent: {}
+[60.289754] (-) TimerEvent: {}
+[60.390317] (-) TimerEvent: {}
+[60.491535] (-) TimerEvent: {}
+[60.592166] (-) TimerEvent: {}
+[60.692660] (-) TimerEvent: {}
+[60.793173] (-) TimerEvent: {}
+[60.893697] (-) TimerEvent: {}
+[60.994203] (-) TimerEvent: {}
+[61.094713] (-) TimerEvent: {}
+[61.195218] (-) TimerEvent: {}
+[61.295951] (-) TimerEvent: {}
+[61.396487] (-) TimerEvent: {}
+[61.496988] (-) TimerEvent: {}
+[61.597577] (-) TimerEvent: {}
+[61.698056] (-) TimerEvent: {}
+[61.798827] (-) TimerEvent: {}
+[61.899584] (-) TimerEvent: {}
+[62.000108] (-) TimerEvent: {}
+[62.100868] (-) TimerEvent: {}
+[62.201515] (-) TimerEvent: {}
+[62.302026] (-) TimerEvent: {}
+[62.403150] (-) TimerEvent: {}
+[62.503661] (-) TimerEvent: {}
+[62.604027] (-) TimerEvent: {}
+[62.704549] (-) TimerEvent: {}
+[62.805162] (-) TimerEvent: {}
+[62.905620] (-) TimerEvent: {}
+[63.006145] (-) TimerEvent: {}
+[63.106666] (-) TimerEvent: {}
+[63.207209] (-) TimerEvent: {}
+[63.307897] (-) TimerEvent: {}
+[63.408411] (-) TimerEvent: {}
+[63.508903] (-) TimerEvent: {}
+[63.609452] (-) TimerEvent: {}
+[63.710277] (-) TimerEvent: {}
+[63.810839] (-) TimerEvent: {}
+[63.911432] (-) TimerEvent: {}
+[64.011958] (-) TimerEvent: {}
+[64.112514] (-) TimerEvent: {}
+[64.213040] (-) TimerEvent: {}
+[64.313543] (-) TimerEvent: {}
+[64.413925] (-) TimerEvent: {}
+[64.514483] (-) TimerEvent: {}
+[64.615017] (-) TimerEvent: {}
+[64.715531] (-) TimerEvent: {}
+[64.815959] (-) TimerEvent: {}
+[64.916423] (-) TimerEvent: {}
+[65.016888] (-) TimerEvent: {}
+[65.117691] (-) TimerEvent: {}
+[65.218335] (-) TimerEvent: {}
+[65.318875] (-) TimerEvent: {}
+[65.419512] (-) TimerEvent: {}
+[65.520054] (-) TimerEvent: {}
+[65.621044] (-) TimerEvent: {}
+[65.721782] (-) TimerEvent: {}
+[65.822311] (-) TimerEvent: {}
+[65.922947] (-) TimerEvent: {}
+[66.023687] (-) TimerEvent: {}
+[66.124178] (-) TimerEvent: {}
+[66.224683] (-) TimerEvent: {}
+[66.325234] (-) TimerEvent: {}
+[66.425766] (-) TimerEvent: {}
+[66.526342] (-) TimerEvent: {}
+[66.626866] (-) TimerEvent: {}
+[66.727439] (-) TimerEvent: {}
+[66.828040] (-) TimerEvent: {}
+[66.928589] (-) TimerEvent: {}
+[67.029097] (-) TimerEvent: {}
+[67.129637] (-) TimerEvent: {}
+[67.230183] (-) TimerEvent: {}
+[67.330676] (-) TimerEvent: {}
+[67.431166] (-) TimerEvent: {}
+[67.531654] (-) TimerEvent: {}
+[67.632422] (-) TimerEvent: {}
+[67.732921] (-) TimerEvent: {}
+[67.833609] (-) TimerEvent: {}
+[67.934187] (-) TimerEvent: {}
+[68.034740] (-) TimerEvent: {}
+[68.135500] (-) TimerEvent: {}
+[68.236268] (-) TimerEvent: {}
+[68.336855] (-) TimerEvent: {}
+[68.437457] (-) TimerEvent: {}
+[68.538016] (-) TimerEvent: {}
+[68.638576] (-) TimerEvent: {}
+[68.739190] (-) TimerEvent: {}
+[68.839725] (-) TimerEvent: {}
+[68.940263] (-) TimerEvent: {}
+[69.040801] (-) TimerEvent: {}
+[69.141362] (-) TimerEvent: {}
+[69.241956] (-) TimerEvent: {}
+[69.342475] (-) TimerEvent: {}
+[69.442975] (-) TimerEvent: {}
+[69.543546] (-) TimerEvent: {}
+[69.644027] (-) TimerEvent: {}
+[69.744581] (-) TimerEvent: {}
+[69.845053] (-) TimerEvent: {}
+[69.945544] (-) TimerEvent: {}
+[70.045992] (-) TimerEvent: {}
+[70.146529] (-) TimerEvent: {}
+[70.247006] (-) TimerEvent: {}
+[70.347521] (-) TimerEvent: {}
+[70.448009] (-) TimerEvent: {}
+[70.548500] (-) TimerEvent: {}
+[70.648914] (-) TimerEvent: {}
+[70.749445] (-) TimerEvent: {}
+[70.849938] (-) TimerEvent: {}
+[70.950414] (-) TimerEvent: {}
+[71.050867] (-) TimerEvent: {}
+[71.151387] (-) TimerEvent: {}
+[71.251903] (-) TimerEvent: {}
+[71.352451] (-) TimerEvent: {}
+[71.453007] (-) TimerEvent: {}
+[71.553576] (-) TimerEvent: {}
+[71.654046] (-) TimerEvent: {}
+[71.754618] (-) TimerEvent: {}
+[71.855186] (-) TimerEvent: {}
+[71.955742] (-) TimerEvent: {}
+[72.056204] (-) TimerEvent: {}
+[72.156642] (-) TimerEvent: {}
+[72.257301] (-) TimerEvent: {}
+[72.357942] (-) TimerEvent: {}
+[72.458511] (-) TimerEvent: {}
+[72.558983] (-) TimerEvent: {}
+[72.659496] (-) TimerEvent: {}
+[72.760074] (-) TimerEvent: {}
+[72.860708] (-) TimerEvent: {}
+[72.961250] (-) TimerEvent: {}
+[73.061853] (-) TimerEvent: {}
+[73.162419] (-) TimerEvent: {}

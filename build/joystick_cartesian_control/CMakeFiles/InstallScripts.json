@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/devika/new_manipulator/src/build/joystick_cartesian_control/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
