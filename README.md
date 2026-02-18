@@ -20,8 +20,7 @@ c
 
 
 # Switch to Servo
-ros2 topic pub /control_mode std_msgs/msg/String "data: 'SERVO_CONTROL'" --once
-
+ros2 topic pub /servo_mode std_msgs/msg/Bool "data: true" --once
 # Switch to PID
 ros2 topic pub /control_mode std_msgs/msg/String "data: 'PID_CONTROL'" --once
 
