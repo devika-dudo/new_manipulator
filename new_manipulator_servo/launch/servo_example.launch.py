@@ -30,8 +30,8 @@ def generate_launch_description():
     # Declare use_sim_time argument at the very beginning
     declare_use_sim_time = DeclareLaunchArgument(
         'use_sim_time',
-        default_value='true',  # Default to true for Gazebo
-        description='Use simulation time'
+        default_value='false',  # Default to true for Gazebo
+        description='Use actual time'
     )
     
     # Get the use_sim_time value
@@ -42,12 +42,12 @@ def generate_launch_description():
     pkg_share_moveit_config = get_package_share_directory('new_manipulator_moveit_config')
     
     # Define all file paths explicitly
-    urdf_file = os.path.join(pkg_share_manipulator, 'urdf', 'model.urdf')
+    urdf_file = os.path.join(pkg_share_manipulator, 'urdf', 'model.urdf') #this is urdf with gazebo thingy 
     srdf_file = os.path.join(pkg_share_moveit_config, 'config', 'new_manipulator.srdf')
     kinematics_file = os.path.join(pkg_share_moveit_config, 'config', 'kinematics.yaml')
     joint_limits_file = os.path.join(pkg_share_moveit_config, 'config', 'joint_limits.yaml')
     
-    moveit_config = (
+    moveit_config = ( #it creates an object with everything that moveit needs
         MoveItConfigsBuilder("new_manipulator", package_name="new_manipulator_moveit_config")
         .robot_description(file_path=urdf_file)
         .robot_description_semantic(file_path=srdf_file)
@@ -71,7 +71,7 @@ def generate_launch_description():
         executable="rviz2",
         name="rviz2",
         output="log",
-        arguments=["-d", rviz_config_file],
+        arguments=["-d", rviz_config_file],#display flag
         parameters=[
             moveit_config.robot_description,
             moveit_config.robot_description_semantic,
@@ -80,16 +80,18 @@ def generate_launch_description():
     )
     
     # Container - ADD use_sim_time parameter
+    #is a single process that runs multiple nodes inside it , so it shres memory instead of communicating so its faster 
+    #ComposableNodeContainer is a python class in launch_ros.actions 
     container = ComposableNodeContainer(
-        name="moveit_servo_demo_container",
-        namespace="/",
+        name="moveit_servo_demo_container",#just simply giving name to the container as this
+        namespace="/",#so i think this launch file assumes the rest of the tree is being published by rsb
         package="rclcpp_components",
-        executable="component_container_mt",
+        executable="component_container_mt",#mt means multithreaded, it runs components in multiple threads simulataneously 
         parameters=[{"use_sim_time": use_sim_time}],  # ← ADDED
         composable_node_descriptions=[
             ComposableNode(
-                package="tf2_ros",
-                plugin="tf2_ros::StaticTransformBroadcasterNode",
+                package="tf2_ros", #publishes static tranform from world to base_link
+                plugin="tf2_ros::StaticTransformBroadcasterNode",#useful in cases where urdf doesnt have world
                 name="static_tf2_broadcaster",
                 parameters=[{
                     "child_frame_id": "base_link", 

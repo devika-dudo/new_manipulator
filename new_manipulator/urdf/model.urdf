@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
-     Commit Version 1.6.0-4-g7f85cfe  Build Version 1.6.7995.38578
-     For more information, please see http//wiki.ros.org/sw_urdf_exporter -->
+
 <robot name="new_manipulator">
   <link name="world"/>
     <joint name="base_joint" type="fixed">
@@ -660,7 +658,7 @@
    <joint name="joint_4">
      <command_interface name="position"/>
      <state_interface name="position">
-       <param name="initial_value">-2.39</param>
+       <param name="initial_value">0.0</param>
       </state_interface>
       <state_interface name="velocity"/>
    </joint>
@@ -723,7 +721,7 @@
 
 <gazebo>
     <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-<parameters>/home/devika/new_manipulator/src/new_manipulator/config/controller_manager.yaml</parameters>
+<parameters>/home/devika/new_manipulator/src/new_manipulator/config/my_controllers.yaml</parameters>
 <controller_manager_node_name>controller_manager</controller_manager_node_name>
     <ros>
       <namespace>/</namespace>

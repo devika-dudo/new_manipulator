@@ -13,26 +13,27 @@
 
 namespace new_manipulator_hardware
 {
-
+//return type:hardware_interface::CallbackReturn 
 hardware_interface::CallbackReturn MicroROSHardware::on_init(
   const hardware_interface::HardwareInfo & info)
 {
   if (
+    //runs the parent class' on_init, in that on_init it stores urdf parsed data into info, so it will have all joint info names robot name etc
     hardware_interface::SystemInterface::on_init(info) !=
     hardware_interface::CallbackReturn::SUCCESS)
   {
     return hardware_interface::CallbackReturn::ERROR;
   }
-
+//sets size of vector -- fills all with NaN values -- not 0 because NaN means no data recieved yet
   hw_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
   hw_positions_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
   hw_velocities_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
   last_teensy_commands_.resize(info_.joints.size(), std::numeric_limits<double>::quiet_NaN());
 
   servo_mode_ = false;
-
+//a node named microros_hardware_interface is created 
   node_ = rclcpp::Node::make_shared("microros_hardware_interface");
-  
+  //call back group controls all callbacks -- its set to mutually exclusive so that only one callback runs at a time, command and state shouldnt get updated simultaneously
   callback_group_ = node_->create_callback_group(
     rclcpp::CallbackGroupType::MutuallyExclusive);
 
@@ -53,6 +54,7 @@ hardware_interface::CallbackReturn MicroROSHardware::on_init(
     teensy_cmd_options);
 
   // Subscribe to servo mode switching
+  //ros2 topic pub /servo_mode std_msgs/msg/Bool "data: true" --once ou can do something like this
   auto mode_switch_options = rclcpp::SubscriptionOptions();
   mode_switch_options.callback_group = callback_group_;
   mode_switch_sub_ = node_->create_subscription<std_msgs::msg::Bool>(
@@ -61,6 +63,7 @@ hardware_interface::CallbackReturn MicroROSHardware::on_init(
     mode_switch_options);
 
   // ========== CHANGED: Only LISTEN to Teensy control mode, don't publish commands ==========
+  //ros2 topic pub /control_mode std_msgs/msg/String "data: 'PID_CONTROL'" --once you can do this to change 
   auto teensy_mode_options = rclcpp::SubscriptionOptions();
   teensy_mode_options.callback_group = callback_group_;
   teensy_mode_sub_ = node_->create_subscription<std_msgs::msg::String>(
@@ -158,10 +161,15 @@ hardware_interface::return_type MicroROSHardware::read(
 hardware_interface::return_type MicroROSHardware::write(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
-  if (servo_mode_) {
+
+  if (servo_mode_ || teensy_in_pwm_mode_ ) {
     // Don't publish - servo is in control
-    return hardware_interface::return_type::OK;
+    for (size_t i = 0; i < hw_commands_.size(); i++) {
+      hw_commands_[i] = hw_positions_[i];  // ← controller never forgets current pose
+    }
+    return hardware_interface::return_type::OK;  // don't publish
   }
+    
   
   // Trajectory mode: publish commands
   auto msg = std_msgs::msg::Float64MultiArray();
@@ -179,7 +187,7 @@ hardware_interface::return_type MicroROSHardware::write(
 
 void MicroROSHardware::joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg)
 {
-  // ALWAYS update from actual feedback
+  // ALWAYS update from actual feedback--- this updates the hw positions and hw velocities used in read 
   for (size_t i = 0; i < msg->name.size() && i < 6; i++)
   {
     for (size_t j = 0; j < info_.joints.size(); j++)
@@ -199,22 +207,22 @@ void MicroROSHardware::joint_state_callback(const sensor_msgs::msg::JointState::
 
 void MicroROSHardware::teensy_command_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg)
 {
-  // Track commands sent to Teensy
+  // Track commands sent to Teensy, just listens to joint commands to teensy 
   for (size_t i = 0; i < msg->data.size() && i < last_teensy_commands_.size(); i++)
   {
     last_teensy_commands_[i] = msg->data[i];
   }
 }
-
+//this is servo_mode callback
 void MicroROSHardware::mode_switch_callback(const std_msgs::msg::Bool::SharedPtr msg)
-{
+{//the msg will be either true or false , so initially its false 
   bool new_mode = msg->data;
-  
+  //if new data , servo mode is the new data 
   if (new_mode != servo_mode_)
   {
     servo_mode_ = new_mode;
     
-    if (servo_mode_)
+    if (servo_mode_) //if true 
     {
       RCLCPP_INFO(node_->get_logger(), "🎮 SWITCHING TO SERVO MODE");
     }
@@ -223,7 +231,7 @@ void MicroROSHardware::mode_switch_callback(const std_msgs::msg::Bool::SharedPtr
       RCLCPP_INFO(node_->get_logger(), "🤖 SWITCHING TO TRAJECTORY MODE");
       
       // ========== CRITICAL: Sync commands to current position ==========
-      // Publish current joint states as new commands to prevent jumping!
+      // Publish current joint states as new commands to prevent jumping!, so we need to make sure joint states are recieved no matter in what mode 
       auto sync_msg = std_msgs::msg::Float64MultiArray();
       sync_msg.data.resize(6);
       
@@ -245,6 +253,7 @@ void MicroROSHardware::mode_switch_callback(const std_msgs::msg::Bool::SharedPtr
 
 // ========== FIXED: Only monitor mode, don't publish commands ==========
 // mode_switch_handler.py will handle publishing encoder positions to Teensy
+//subscriber to control mode 
 void MicroROSHardware::teensy_mode_callback(const std_msgs::msg::String::SharedPtr msg)
 {
   std::string mode = msg->data;
@@ -254,6 +263,7 @@ void MicroROSHardware::teensy_mode_callback(const std_msgs::msg::String::SharedP
   
   if (mode == "PID_CONTROL")
   {
+    teensy_in_pwm_mode_ = true;  
     RCLCPP_INFO(node_->get_logger(), "PID mode activated");
     RCLCPP_INFO(node_->get_logger(), "Position sync handled by mode_switch_handler node");
     // ✓ REMOVED: Publishing commands here - let mode_switch_handler do it!
@@ -261,6 +271,7 @@ void MicroROSHardware::teensy_mode_callback(const std_msgs::msg::String::SharedP
   }
   else if (mode == "PWM_CONTROL")
   {
+    teensy_in_pwm_mode_ = false; 
     RCLCPP_INFO(node_->get_logger(), "PWM mode activated - direct motor control");
   }
   

@@ -1,9 +1,0 @@
-<library path="new_manipulator_hardware">
-  <class name="new_manipulator_hardware/MicroROSHardware"
-         type="new_manipulator_hardware::MicroROSHardware"
-         base_class_type="hardware_interface::SystemInterface">
-    <description>
-      Hardware interface for new_manipulator using micro-ROS communication
-    </description>
-  </class>
-</library>

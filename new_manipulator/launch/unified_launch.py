@@ -7,9 +7,10 @@ from launch.conditions import IfCondition, UnlessCondition
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 import os
-from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory # this looks up packages via environment variables like AMENT_PREFIX_PATH, so it only works when you source -- sourceing updates a bunch of environment variables like AMENT_PREFIX_PATH
+# PYTHONPATH, PATH , LD_LIBRARY_PATH(.so files),COLCON_PREFIX_PATH 
 
-def generate_launch_description():
+def generate_launch_description():# this is a mandatory fn in ros2 python launch file, becoz when you run a launch file it searches for this function first , if its not there launch file fails 
     # ==================== PATHS ====================
     pkg_new_manipulator = get_package_share_directory('new_manipulator')
     pkg_new_manipulator_hardware = get_package_share_directory('new_manipulator_hardware')
@@ -20,7 +21,7 @@ def generate_launch_description():
     controllers_config = os.path.join(pkg_new_manipulator_hardware, 'config', 'controllers.yaml')
     
     # ==================== LAUNCH ARGUMENTS ====================
-    declare_use_sim_arg = DeclareLaunchArgument(
+    declare_use_sim_arg = DeclareLaunchArgument( # declares an input variable for launch file 
         'use_sim_time',
         default_value='true',
         description='Use simulation (true) or real hardware (false)'
@@ -32,11 +33,11 @@ def generate_launch_description():
         description='Full path to world file to load (simulation only)'
     )
     
-    use_sim_time = LaunchConfiguration('use_sim_time')
-    world = LaunchConfiguration('world')
+    use_sim_time = LaunchConfiguration('use_sim_time') # tells the launch system that such an argument will be there 
+    world = LaunchConfiguration('world')# thats is give me the value filled in 'world' when launch file is run
     
     # ==================== PROCESS URDF WITH XACRO ====================
-    robot_description_cmd = Command([
+    robot_description_cmd = Command([ # runs a shell command thats converts xacro to urdf 
         'xacro ', urdf_file, 
         ' use_sim:=', use_sim_time
     ])
@@ -44,10 +45,10 @@ def generate_launch_description():
     # ==================== COMMON NODES ====================
     
     # Robot State Publisher
-    robot_state_publisher_node = Node(
-        package='robot_state_publisher',
+    robot_state_publisher_node = Node( #rsb node is run and the urdf is passed to it as a string
+        package='robot_state_publisher',# rsb recieves urdf and /joint_states -- to build the tf tree (kinematic tree- computes fk )
         executable='robot_state_publisher',
-        name='robot_state_publisher',
+        name='robot_state_publisher',#publishes /tf(for moving joints) and /tf_static(for static joints), it publishes /robot_description
         output='screen',
         parameters=[
             {'robot_description': ParameterValue(robot_description_cmd, value_type=str)},
@@ -57,7 +58,7 @@ def generate_launch_description():
     
     # ==================== SIMULATION NODES ====================
     
-    spawn_entity_node = Node(
+    spawn_entity_node = Node( #given gazebo wads already running
         package='gazebo_ros',
         executable='spawn_entity.py',
         name='spawn_entity',
@@ -69,11 +70,13 @@ def generate_launch_description():
         output='screen',
         condition=IfCondition(use_sim_time)
     )
-    
+    #controller_manager is a ros2_control node that manages controllers, talks to hardware and exposes services like switch load controllers
     # Joint State Broadcaster for simulation
+    #here the controller we are spawning is jsb
+    # it reads position from hardware and publishes /joint_states 
     joint_state_broadcaster_spawner_sim = Node(
         package='controller_manager',
-        executable='spawner',
+        executable='spawner',#spawner is a helper script that loads, configure and activates controller
         arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
         output='screen',
     )
@@ -93,6 +96,7 @@ def generate_launch_description():
         arguments=['hand_controller', '--controller-manager', '/controller_manager'],
         output='screen',
     )
+    #once robot launched in gazebo jsb node is run
     
     load_joint_state_after_spawn = RegisterEventHandler(
         event_handler=OnProcessExit(
@@ -101,7 +105,7 @@ def generate_launch_description():
         ),
         condition=IfCondition(use_sim_time)
     )
-    
+    #once jsb is run arm and hand controllers and run
     load_arm_and_hand_after_jsb_sim = RegisterEventHandler(
         event_handler=OnProcessExit(
             target_action=joint_state_broadcaster_spawner_sim,
@@ -118,7 +122,7 @@ def generate_launch_description():
         executable='ros2_control_node',
         parameters=[
             {'robot_description': ParameterValue(robot_description_cmd, value_type=str)},
-            controllers_config,
+            controllers_config,#here we have send the yaml file to the ros2 control node , so ros2 control registers them
             {'use_sim_time': use_sim_time}
         ],
         output='screen',
@@ -180,7 +184,7 @@ def generate_launch_description():
     
     # ==================== GAZEBO INCLUDE ====================
     
-    gazebo_launch = IncludeLaunchDescription(
+    gazebo_launch = IncludeLaunchDescription( #this runs gzclient(GUI) and gzserver(physics engine) 
         PythonLaunchDescriptionSource([
             os.path.join(pkg_gazebo_ros, 'launch', 'gazebo.launch.py')
         ]),

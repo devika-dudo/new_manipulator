@@ -2,6 +2,8 @@ from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.event_handlers import OnProcessExit
+from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, RegisterEventHandler, TimerAction
+
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 import os
@@ -41,49 +43,57 @@ def generate_launch_description():
     )
     
     # 2. Spawn Entity - WITH use_sim_time parameter
-    spawn_entity_node = Node(
-        package='gazebo_ros',
-        executable='spawn_entity.py',
-        name='spawn_entity',
-        arguments=[
-            '-entity', 'new_manipulator',
-            '-topic', '/robot_description',
-            '-x', '0', '-y', '0', '-z', '0.0'
-        ],
-        output='screen',
-        parameters=[{'use_sim_time': True}]
-    )
+
+    spawn_entity = Node(
+    package='gazebo_ros',
+    executable='spawn_entity.py',
+    name='spawn_entity',
+    arguments=[
+        '-entity', 'new_manipulator',
+        '-topic', '/robot_description',
+        '-x', '0', '-y', '0', '-z', '0.0'
+    ],
+    output='screen',
+    parameters=[{'use_sim_time': True}]
+)
+
+    spawn_entity_node = TimerAction(
+    period=2.0,
+    actions=[spawn_entity]
+)
     
     # 3. Controller Spawners - ALL WITH use_sim_time
     joint_state_broadcaster_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['joint_state_broadcaster'],
+        arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
         output='screen',
-        parameters=[{'use_sim_time': True}]
     )
     
     arm_group_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['arm_group_controller'],
+        arguments=['arm_group_controller', '--controller-manager', '/controller_manager'],
+
         output='screen',
-        parameters=[{'use_sim_time': True}]
     )
     
     hand_controller_spawner = Node(
         package='controller_manager',
         executable='spawner',
-        arguments=['hand_controller'],
+        arguments=['hand_controller', '--controller-manager', '/controller_manager']     ,
         output='screen',
-        parameters=[{'use_sim_time': True}]
     )
     
     # 4. Event Handlers for Sequential Loading
     load_joint_state_after_spawn = RegisterEventHandler(
         event_handler=OnProcessExit(
-            target_action=spawn_entity_node,
-            on_exit=[joint_state_broadcaster_spawner]
+            target_action=spawn_entity,
+            on_exit=[
+            TimerAction(
+                period=2.0,
+                actions=[joint_state_broadcaster_spawner]
+            )]
         )
     )
     

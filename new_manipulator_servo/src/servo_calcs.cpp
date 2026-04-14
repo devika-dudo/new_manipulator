@@ -647,7 +647,12 @@ bool ServoCalcs::cartesianServoCalcs(geometry_msgs::msg::TwistStamped& cmd,
                                                       parameters_->lower_singularity_threshold,
                                                       parameters_->leaving_singularity_threshold_multiplier,
                                                       *node_->get_clock(), current_state_, status_);
-
+    for (std::size_t i = 0; i < internal_joint_state_.name.size(); ++i)
+  {
+    const auto& name = internal_joint_state_.name[i];
+    if (name == "joint_4" || name == "joint_5" || name == "joint_6" || name=="fake_joint")
+      delta_theta_.coeffRef(i) = 0.0;
+  }
   return internalServoUpdate(delta_theta_, joint_trajectory, ServoType::CARTESIAN_SPACE);
 }
 

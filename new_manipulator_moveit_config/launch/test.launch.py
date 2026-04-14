@@ -33,7 +33,7 @@ def generate_launch_description():
     kinematics_file_path = 'config/kinematics.yaml'
     pilz_cartesian_limits_file_path = 'config/pilz_cartesian_limits.yaml'
     initial_positions_file_path = 'config/initial_positions.yaml'
-    rviz_config_file_path = 'rviz/move_group.rviz'
+    rviz_config_file_path = 'config/rviz.rviz'
  
     # Set the full paths
     urdf_model_path = os.path.join(pkg_share_gazebo, urdf_file_path)

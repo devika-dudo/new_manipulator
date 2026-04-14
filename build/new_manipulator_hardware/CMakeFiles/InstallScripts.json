@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/devika/new_manipulator/src/build/new_manipulator_hardware/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

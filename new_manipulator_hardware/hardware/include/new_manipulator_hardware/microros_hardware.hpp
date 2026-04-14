@@ -22,9 +22,13 @@
 namespace new_manipulator_hardware
 {
 class MicroROSHardware : public hardware_interface::SystemInterface
+//hardware_interface::SystemINterface is the base class provided by ros2_control, so this class is inheriting from it
 {
 public:
   hardware_interface::CallbackReturn on_init(
+    // ros2_control passes your URDF joint info here
+// you read joint names, set up your vectors
+// e.g. "ok i have 6 joints, initialize arrays for positions/velocities"
     const hardware_interface::HardwareInfo & info) override;
   
   std::vector<hardware_interface::StateInterface> export_state_interfaces() override;
@@ -32,15 +36,29 @@ public:
   std::vector<hardware_interface::CommandInterface> export_command_interfaces() override;
   
   hardware_interface::CallbackReturn on_activate(
+    // called when controller starts
+// good place to establish micro-ROS connection to ESP32
+// set joints to initial state
+
     const rclcpp_lifecycle::State & previous_state) override;
   
   hardware_interface::CallbackReturn on_deactivate(
+    // called when controller stops
+// clean up micro-ROS connection
+// safe stop
     const rclcpp_lifecycle::State & previous_state) override;
   
   hardware_interface::return_type read(
+    // you tell ros2_control "here's where to READ joint states FROM"
+// returns pointers to your position/velocity variables
+// ros2_control reads these every loop
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
   
   hardware_interface::return_type write(
+    // you tell ros2_control "here's where to WRITE commands TO"
+// returns pointers to your command variables
+// JointTrajectoryController writes into these every loop
+
     const rclcpp::Time & time, const rclcpp::Duration & period) override;
 
 private:
@@ -59,6 +77,8 @@ private:
     // Sync handshake
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr sync_complete_sub_;
   bool syncing_to_position_;
+  bool teensy_in_pwm_mode_ = true;
+
   std::vector<double> sync_positions_;  // position snapshot taken at mode switch
 
   // Callback

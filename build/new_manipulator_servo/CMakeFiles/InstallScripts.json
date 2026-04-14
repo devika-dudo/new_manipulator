@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/home/devika/new_manipulator/src/build/new_manipulator_servo/cmake_install.cmake",
-		"/home/devika/new_manipulator/src/build/new_manipulator_servo/gtest/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

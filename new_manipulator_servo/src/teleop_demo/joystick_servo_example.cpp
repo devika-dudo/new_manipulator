@@ -2,7 +2,7 @@
 // - Cartesian mode: smooth continuous motion
 // - Joint mode: Button pressed = move, released = stop
 // - Gripper: Button 2 toggle open/close
-
+//converts the joy to twist messages mainly 
 #include <sensor_msgs/msg/joy.hpp>
 #include <geometry_msgs/msg/twist_stamped.hpp>
 #include <control_msgs/msg/joint_jog.hpp>
@@ -50,7 +50,7 @@ const double GRIPPER_CLOSED_POSITION = 0.0;
 const bool USE_DOMINANT_AXIS_FILTER = false;
 const double DOMINANT_AXIS_RATIO = 1.5;
 
-// Joystick mapping
+// Joystick mapping -- ARE THESE CORRECT DEVIKAAAAAAAAAAAAAA??? CHECK CHECK
 enum Axis { STICK_X = 0, STICK_Y = 1, STICK_TWIST = 2, THROTTLE = 3, HAT_X = 4, HAT_Y = 5 };
 enum Button { TRIGGER = 0, BUTTON_2 = 1, BUTTON_3 = 2, BUTTON_4 = 3, BUTTON_5 = 4, BUTTON_6 = 5,
               BUTTON_7 = 6, BUTTON_8 = 7, BUTTON_9 = 8, BUTTON_10 = 9, BUTTON_11 = 10, BUTTON_12 = 11 };
@@ -149,14 +149,14 @@ void convertJoyToTwist(const std::vector<float>& axes,
   trigger_pressed_last = trigger_pressed_now;
 }**/
 
-namespace moveit_servo
+namespace moveit_servo//to avoid conflicts--ie if theres any other jottosevopub it can  cause issues
 {
-class JoyToServoPub : public rclcpp::Node
+class JoyToServoPub : public rclcpp::Node //so its a node
 {
 public:
-  JoyToServoPub(const rclcpp::NodeOptions& options)
+  JoyToServoPub(const rclcpp::NodeOptions& options) //nodeoptions is passed to it when run--it will have the parameters
     : Node("joy_to_twist_publisher", options), 
-      frame_to_publish_(BASE_FRAME_ID),
+      frame_to_publish_(BASE_FRAME_ID),//initializing memeber variables before constructor body runs
       gripper_is_open_(false),
       button_2_was_pressed_(false),
       received_first_joy_msg_(false)
@@ -165,7 +165,7 @@ public:
     current_velocity_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
     
     // Setup publishers and subscribers
-    joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(
+    joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(//subscribes to joy2 
         JOY_TOPIC, rclcpp::SystemDefaultsQoS(),
         [this](const sensor_msgs::msg::Joy::ConstSharedPtr& msg) { return joyCB(msg); });
 
@@ -213,7 +213,7 @@ void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
   // Check if we're in button mode (any button pressed)
   bool button_mode = isJointButtonPressed(msg->buttons);
   
-  if (!button_mode)
+  if (!button_mode) //if no button pressed this will run 
   {
     // ==========================================
     // CARTESIAN MODE - Axes control
@@ -248,7 +248,7 @@ void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
     pwm_pub_->publish(pwm_msg);
   }
   else
-  {
+  {//if button pressed
     // ==========================================
     // BUTTON MODE - Direct PWM control
     // ==========================================
@@ -280,7 +280,7 @@ void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
     pwm_msg.data.resize(6);
     
     // Motor speeds (adjust these!)
-    const int MOTOR_SPEEDS[6] = {100, 100, 100, 100, 30, 20};
+    const int MOTOR_SPEEDS[6] = {100, 100, 100, 100, 30, 100};
     
     // Process each motor (0-5)
     for (int motor_idx = 0; motor_idx < 6; motor_idx++) {
@@ -447,3 +447,5 @@ private:
 
 #include <rclcpp_components/register_node_macro.hpp>
 RCLCPP_COMPONENTS_REGISTER_NODE(moveit_servo::JoyToServoPub)
+//is a plugin so CMake compiles it into a joy_to_servo.so 
+//plugins dont have a main --- this declaration is the substitute of main--- so directly calls the JoyToServoPub constructor

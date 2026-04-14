@@ -14,7 +14,10 @@ scale:
 
 # Optionally override Servo's internal velocity scaling when near singularity or collision (0.0 = use internal velocity scaling)
 # override_velocity_scaling_factor = 0.0 # valid range [0.0:1.0]
-
+locked_joints:
+  joint_4: 0.0
+  joint_5: 0.0
+  joint_6: 0.0
 ## Properties of outgoing commands
 publish_period: 0.02  # 1/Nominal publish rate [seconds]
 
@@ -55,7 +58,7 @@ cartesian_command_in_topic: ~/delta_twist_cmds  # Topic for incoming Cartesian t
 joint_command_in_topic: ~/delta_joint_cmds # Topic for incoming joint angle commands
 joint_topic: /joint_states
 status_topic: ~/status # Publish status to this topic
-command_out_topic: /joint_commands_to_teensy # Publish outgoing commands here
+command_out_topic: /arm_group_controller/joint_trajectory # Publish outgoing commands here /joint_commands_to_teensy ,/arm_group_controller/joint_trajectory
 
 ## Collision checking for the entire robot body
 check_collisions: true # Check collisions?

@@ -7,7 +7,7 @@ import os
 
 def generate_launch_description():
     pkgPath = FindPackageShare(package='new_manipulator').find('new_manipulator')
-    urdfModelPath = os.path.join(pkgPath, 'urdf/model.xacro')
+    urdfModelPath = os.path.join(pkgPath, 'urdf/model.urdf')
     rvizConfigPath = os.path.join(pkgPath, 'config/config.rviz')
     
     with open(urdfModelPath, 'r') as infp:

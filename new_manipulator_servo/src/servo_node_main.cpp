@@ -45,9 +45,23 @@ int main(int argc, char* argv[])
 
   rclcpp::NodeOptions options;
 
-  auto servo_node = std::make_shared<moveit_servo::ServoNode>(options);
+  auto servo_node = std::make_shared<moveit_servo::ServoNode>(options);//create object+manage its memory
 
-  rclcpp::spin(servo_node->get_node_base_interface());
+  rclcpp::spin(servo_node->get_node_base_interface());//keeps the node alive 
+  //get node base interface :
+  // spin() = 
+  // while(true) {
+  //   check for incoming messages
+  //   call callbacks if messages arrived
+  //   repeat forever...
+  // }
+  // "I'm not a node myself, but here's the 
+//  actual node interface inside me"
+// rclcpp::spin(servo_node->get_node_base_interface());--is a wrapper that contains a node
+// Way 1 - if your class IS a node (like JoyToServoPub):
+// rclcpp::spin(my_node);
 
+// // Way 2 - if your class CONTAINS a node (like ServoNode):
+// rclcpp::spin(servo_node->get_node_base_interface());
   rclcpp::shutdown();
 }
