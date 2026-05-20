@@ -6,9 +6,7 @@
 #include <sensor_msgs/msg/joy.hpp>
 #include <geometry_msgs/msg/twist_stamped.hpp>
 #include <control_msgs/msg/joint_jog.hpp>
-#include <trajectory_msgs/msg/joint_trajectory.hpp>
 #include <std_srvs/srv/trigger.hpp>
-#include <moveit_msgs/msg/planning_scene.hpp>
 #include <rclcpp/client.hpp>
 #include <rclcpp/node.hpp>
 #include <rclcpp/publisher.hpp>
@@ -18,20 +16,19 @@
 #include <chrono>
 #include <map>
 #include <std_msgs/msg/int16_multi_array.hpp>
+#include <std_msgs/msg/string.hpp>   
+#include <std_msgs/msg/bool.hpp>     
 
 
 // Configuration
 const std::string JOY_TOPIC = "/joy2";
 const std::string TWIST_TOPIC = "/servo_node/delta_twist_cmds";
 const std::string JOINT_TOPIC = "/servo_node/delta_joint_cmds";
-const std::string GRIPPER_TOPIC = "/hand_controller/joint_trajectory";
-const std::string EEF_FRAME_ID = "fake_link";
 const std::string BASE_FRAME_ID = "base_link";
 
 // Deadband configuration
 const double STICK_DEADBAND = 0.15;
 const double TWIST_DEADBAND = 0.20;
-const double HAT_DEADBAND = 0.05;
 const double THROTTLE_DEADBAND = 0.05;
 
 // Ramping configuration
@@ -42,9 +39,6 @@ const double MAX_DELTA = ACCELERATION_RATE / UPDATE_RATE;
 // Command timeout for Cartesian mode
 const double COMMAND_TIMEOUT_MS = 200.0;
 
-// Gripper positions
-const double GRIPPER_OPEN_POSITION = 1.0;
-const double GRIPPER_CLOSED_POSITION = 0.0;
 
 // Optional axis filtering
 const bool USE_DOMINANT_AXIS_FILTER = false;
@@ -110,12 +104,10 @@ void convertJoyToTwist(const std::vector<float>& axes,
   double stick_x = applyDeadband(axes[STICK_X], STICK_DEADBAND);
   double stick_y = applyDeadband(axes[STICK_Y], STICK_DEADBAND);
   double stick_twist = applyDeadband(axes[STICK_TWIST], TWIST_DEADBAND);
-  double hat_x = applyDeadband(axes[HAT_X], HAT_DEADBAND);
-  double hat_y = applyDeadband(axes[HAT_Y], HAT_DEADBAND);
+ 
   
   if (USE_DOMINANT_AXIS_FILTER) {
     applyDominantAxisFiltering(stick_x, stick_y);
-    applyDominantAxisFiltering(hat_x, hat_y);
   }
   
   double throttle_raw = axes[THROTTLE];
@@ -125,8 +117,8 @@ void convertJoyToTwist(const std::vector<float>& axes,
   twist->twist.linear.x = -stick_x;
   twist->twist.linear.y = stick_y;
   twist->twist.linear.z = throttle_deadbanded;
-  twist->twist.angular.x = hat_y;
-  twist->twist.angular.y = -hat_x;
+  twist->twist.angular.x = 0.0;
+  twist->twist.angular.y = 0.0;
   twist->twist.angular.z = stick_twist;
 }
 
@@ -157,9 +149,8 @@ public:
   JoyToServoPub(const rclcpp::NodeOptions& options) //nodeoptions is passed to it when run--it will have the parameters
     : Node("joy_to_twist_publisher", options), 
       frame_to_publish_(BASE_FRAME_ID),//initializing memeber variables before constructor body runs
-      gripper_is_open_(false),
-      button_2_was_pressed_(false),
       received_first_joy_msg_(false)
+
   {
     // Initialize velocity state to zero
     current_velocity_ = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
@@ -171,10 +162,14 @@ public:
 
     twist_pub_ = this->create_publisher<geometry_msgs::msg::TwistStamped>(TWIST_TOPIC, rclcpp::SystemDefaultsQoS());
     joint_pub_ = this->create_publisher<control_msgs::msg::JointJog>(JOINT_TOPIC, rclcpp::SystemDefaultsQoS());
-    gripper_pub_ = this->create_publisher<trajectory_msgs::msg::JointTrajectory>(GRIPPER_TOPIC, rclcpp::SystemDefaultsQoS());
-    collision_pub_ = this->create_publisher<moveit_msgs::msg::PlanningScene>("/planning_scene", rclcpp::SystemDefaultsQoS());
     pwm_pub_ = this->create_publisher<std_msgs::msg::Int16MultiArray>(
     "/motor_commands", rclcpp::SystemDefaultsQoS());
+
+
+    control_mode_pub_ = this->create_publisher<std_msgs::msg::String>("/control_mode", rclcpp::SystemDefaultsQoS());
+    servo_mode_pub_   = this->create_publisher<std_msgs::msg::Bool>("/servo_mode", rclcpp::SystemDefaultsQoS());
+
+
 
     servo_start_client_ = this->create_client<std_srvs::srv::Trigger>("/servo_node/start_servo");
     servo_start_client_->wait_for_service(std::chrono::seconds(1));
@@ -184,7 +179,10 @@ public:
     timeout_timer_ = this->create_wall_timer(
         std::chrono::milliseconds(100),
         std::bind(&JoyToServoPub::timeoutCheck, this));
-
+    RCLCPP_INFO(this->get_logger(), "   HAT_X+  → PID_CONTROL");
+    RCLCPP_INFO(this->get_logger(), "   HAT_X−  → PWM_CONTROL");
+    RCLCPP_INFO(this->get_logger(), "   HAT_Y+  → servo mode ON");
+    RCLCPP_INFO(this->get_logger(), "   HAT_Y−  → servo mode OFF");
     RCLCPP_INFO(this->get_logger(), "╔═══════════════════════════════════════════════════════════╗");
     RCLCPP_INFO(this->get_logger(), "║   Logitech Extreme 3D Pro - Simple Control              ║");
     RCLCPP_INFO(this->get_logger(), "╚═══════════════════════════════════════════════════════════╝");
@@ -210,6 +208,38 @@ void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
     RCLCPP_INFO(this->get_logger(), "✅ Joystick connected!");
   }
   
+//mode switching using the hat button
+if (msg->axes.size() > HAT_Y) //if axes size is atleat 6 
+{
+  float hat_x = msg->axes[HAT_X];
+  float hat_y = msg->axes[HAT_Y];
+
+  if (hat_x > 0.5f) {
+    auto m = std_msgs::msg::String();
+    m.data = "PID_CONTROL";
+    control_mode_pub_->publish(m);
+  }
+  else if (hat_x < -0.5f) {
+    auto m = std_msgs::msg::String();
+    m.data = "PWM_CONTROL";
+    control_mode_pub_->publish(m);
+  }
+
+  if (hat_y > 0.5f) {
+    auto m = std_msgs::msg::Bool();
+    m.data = true;
+    servo_mode_pub_->publish(m);
+  }
+  else if (hat_y < -0.5f) {
+    auto m = std_msgs::msg::Bool();
+    m.data = false;
+    servo_mode_pub_->publish(m);
+  }
+}
+
+
+
+
   // Check if we're in button mode (any button pressed)
   bool button_mode = isJointButtonPressed(msg->buttons);
   
@@ -328,31 +358,7 @@ void joyCB(const sensor_msgs::msg::Joy::ConstSharedPtr& msg)
   }
 }
   
-  void handleGripperToggle(const std::vector<int>& buttons)
-  {
-    bool button_2_pressed = buttons[BUTTON_12];
-    
-    // Rising edge detection
-    if (button_2_pressed && !button_2_was_pressed_) {
-      // Toggle gripper state
-      gripper_is_open_ = !gripper_is_open_;
-      
-      // Send gripper command
-      auto gripper_msg = trajectory_msgs::msg::JointTrajectory();
-      gripper_msg.joint_names = {"joint_6"};
-      
-      trajectory_msgs::msg::JointTrajectoryPoint point;
-      point.positions = {gripper_is_open_ ? GRIPPER_OPEN_POSITION : GRIPPER_CLOSED_POSITION};
-      point.time_from_start = rclcpp::Duration::from_seconds(1.0);
-      
-      gripper_msg.points = {point};
-      gripper_pub_->publish(gripper_msg);
-      
-      RCLCPP_INFO(this->get_logger(), "🤏 Gripper → %s", gripper_is_open_ ? "OPEN" : "CLOSED");
-    }
-    
-    button_2_was_pressed_ = button_2_pressed;
-  }
+  
 
   void timeoutCheck()
   {
@@ -424,9 +430,7 @@ private:
   rclcpp::Time last_command_time_;
   rclcpp::Time last_joint_command_time_;
   
-  // Gripper state
-  bool gripper_is_open_;
-  bool button_2_was_pressed_;
+
   
   // Flag to track if we've received first joy message
   bool received_first_joy_msg_;
@@ -436,10 +440,10 @@ private:
 
   rclcpp::Publisher<geometry_msgs::msg::TwistStamped>::SharedPtr twist_pub_;
   rclcpp::Publisher<control_msgs::msg::JointJog>::SharedPtr joint_pub_;
-  rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr gripper_pub_;
-  rclcpp::Publisher<moveit_msgs::msg::PlanningScene>::SharedPtr collision_pub_;
   rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr servo_start_client_;
   rclcpp::TimerBase::SharedPtr timeout_timer_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr control_mode_pub_;
+  rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr   servo_mode_pub_;
   std::string frame_to_publish_;
 };
 

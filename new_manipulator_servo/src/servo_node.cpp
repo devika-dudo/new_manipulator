@@ -39,6 +39,7 @@
 
 #include <moveit_servo/servo_node.h>
 #include <moveit_servo/servo_parameters.h>
+#include <moveit_servo/servo.h>
 
 static const rclcpp::Logger LOGGER = rclcpp::get_logger("moveit_servo.servo_node");
 
@@ -72,6 +73,14 @@ ServoNode::ServoNode(const rclcpp::NodeOptions& options)
                                 const std::shared_ptr<std_srvs::srv::Trigger::Response>& response) {
         return unpauseCB(request, response);
       });
+  resync_servo_service_ = node_->create_service<std_srvs::srv::Trigger>(
+    "~/resync_to_current_state",
+    [this](const std::shared_ptr<std_srvs::srv::Trigger::Request>&,
+           const std::shared_ptr<std_srvs::srv::Trigger::Response>& response) {
+        servo_->resetLastCommand();
+        servo_->setPaused(false);
+        response->success = true;
+    });
 
   // Can set robot_description name from parameters
   std::string robot_description_name = "robot_description";
@@ -132,6 +141,7 @@ void ServoNode::pauseCB(const std::shared_ptr<std_srvs::srv::Trigger::Request>& 
 void ServoNode::unpauseCB(const std::shared_ptr<std_srvs::srv::Trigger::Request>& /* unused */,
                           const std::shared_ptr<std_srvs::srv::Trigger::Response>& response)
 {
+  servo_->resetLastCommand(); 
   servo_->setPaused(false);
   response->success = true;
 }

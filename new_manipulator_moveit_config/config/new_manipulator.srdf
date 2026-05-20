@@ -38,10 +38,10 @@
         <joint name="joint_5" value="0"/>
     </group_state>
     <group_state name="place" group="arm_group">
-        <joint name="fake_joint" value="0"/>
-        <joint name="joint_1" value="-2.0644"/>
-        <joint name="joint_2" value="1.2664"/>
-        <joint name="joint_3" value="-0.6939"/>
+        <joint name="fake_joint" value="0.0"/>
+        <joint name="joint_1" value="1.079"/>
+        <joint name="joint_2" value="1.787"/>
+        <joint name="joint_3" value="-0.916"/>
         <joint name="joint_4" value="0"/>
         <joint name="joint_5" value="0"/>
     </group_state>

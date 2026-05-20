@@ -110,7 +110,7 @@ public:
 
   /** \brief Pause or unpause processing servo commands while keeping the timers alive */
   void setPaused(bool paused);
-
+void resetLastCommand(); 
 protected:
   /** \brief Run the main calculation loop */
   void mainCalcLoop();

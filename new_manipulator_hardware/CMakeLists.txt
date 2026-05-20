@@ -14,6 +14,11 @@ find_package(pluginlib REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(controller_manager_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
+find_package(trajectory_msgs REQUIRED)
+
+
 
 # Build hardware interface library
 add_library(
@@ -37,6 +42,9 @@ ament_target_dependencies(
   control_msgs
   sensor_msgs
   std_msgs
+  controller_manager_msgs
+  std_srvs
+  trajectory_msgs
 )
 
 
@@ -88,6 +96,9 @@ ament_export_dependencies(
   rclcpp
   sensor_msgs
   std_msgs
+  controller_manager_msgs
+  std_srvs
+  trajectory_msgs
 )
 
 ament_package()

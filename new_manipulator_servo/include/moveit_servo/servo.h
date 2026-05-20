@@ -60,6 +60,7 @@ public:
   ~Servo();
 
   /** \brief start servo node */
+  void resetLastCommand() { servo_calcs_.resetLastCommand(); }
   void start();
 
   /** \brief Pause or unpause processing servo commands while keeping the timers alive */

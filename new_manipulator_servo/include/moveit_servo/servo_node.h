@@ -48,7 +48,7 @@ namespace moveit_servo
 class ServoNode
 {
 public:
-  ServoNode(const rclcpp::NodeOptions& options);
+  ServoNode(const rclcpp::NodeOptions& options);//constructor
 
   // NOLINTNEXTLINE(readability-identifier-naming)
   rclcpp::node_interfaces::NodeBaseInterface::SharedPtr get_node_base_interface()
@@ -58,7 +58,7 @@ public:
 
 private:
   std::shared_ptr<rclcpp::Node> node_;
-  std::unique_ptr<moveit_servo::Servo> servo_;
+  std::unique_ptr<moveit_servo::Servo> servo_;//this is the node inside servonode 
   std::shared_ptr<tf2_ros::Buffer> tf_buffer_;
   std::shared_ptr<planning_scene_monitor::PlanningSceneMonitor> planning_scene_monitor_;
 
@@ -83,5 +83,6 @@ private:
   void unpauseCB(const std::shared_ptr<std_srvs::srv::Trigger::Request>& request,
                  const std::shared_ptr<std_srvs::srv::Trigger::Response>& response);
   rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr unpause_servo_service_;
+  rclcpp::Service<std_srvs::srv::Trigger>::SharedPtr resync_servo_service_;
 };
 }  // namespace moveit_servo

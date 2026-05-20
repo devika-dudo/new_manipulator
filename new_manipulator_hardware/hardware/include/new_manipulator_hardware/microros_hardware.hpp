@@ -6,6 +6,7 @@
 #include <vector>
 #include <thread>
 #include <atomic>
+#include "trajectory_msgs/msg/joint_trajectory.hpp"
 
 #include "hardware_interface/handle.hpp"
 #include "hardware_interface/hardware_info.hpp"
@@ -18,7 +19,8 @@
 #include "std_msgs/msg/float64_multi_array.hpp"
 #include "std_msgs/msg/bool.hpp"
 #include "std_msgs/msg/string.hpp"
-
+#include "controller_manager_msgs/srv/switch_controller.hpp"
+#include "std_srvs/srv/trigger.hpp"
 namespace new_manipulator_hardware
 {
 class MicroROSHardware : public hardware_interface::SystemInterface
@@ -77,14 +79,16 @@ private:
     // Sync handshake
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr sync_complete_sub_;
   bool syncing_to_position_;
-  bool teensy_in_pwm_mode_ = true;
+  bool teensy_in_pwm_mode_ = false;
 
   std::vector<double> sync_positions_;  // position snapshot taken at mode switch
+std_msgs::msg::Float64MultiArray::SharedPtr latest_servo_cmd_;
 
   // Callback
   void sync_complete_callback(const std_msgs::msg::Bool::SharedPtr msg);
 
 
+rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr servo_raw_sub_;
   rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr joint_state_sub_;
   rclcpp::Subscription<std_msgs::msg::Float64MultiArray>::SharedPtr teensy_command_sub_;
   rclcpp::Subscription<std_msgs::msg::Bool>::SharedPtr mode_switch_sub_;
@@ -92,7 +96,13 @@ private:
   
   rclcpp::Publisher<std_msgs::msg::Float64MultiArray>::SharedPtr joint_command_pub_;
   rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr mode_status_pub_;
-  
+  rclcpp::Client<controller_manager_msgs::srv::SwitchController>::SharedPtr switch_controller_client_;
+    rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr traj_pub_;
+rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr resync_servo_client_;
+  rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr pause_servo_client_;
+  rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr unpause_servo_client_;
+  rclcpp::Client<std_srvs::srv::Trigger>::SharedPtr reset_servo_client_;
+
   void joint_state_callback(const sensor_msgs::msg::JointState::SharedPtr msg);
   void teensy_command_callback(const std_msgs::msg::Float64MultiArray::SharedPtr msg);
   void mode_switch_callback(const std_msgs::msg::Bool::SharedPtr msg);

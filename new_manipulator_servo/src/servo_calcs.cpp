@@ -206,6 +206,31 @@ ServoCalcs::~ServoCalcs()
 {
   stop();
 }
+void ServoCalcs::resetLastCommand()
+{
+  // Rebuild last_sent_command_ from ACTUAL current robot state
+  // so when servo resumes, its first output = where robot actually is
+  auto fresh_command = std::make_unique<trajectory_msgs::msg::JointTrajectory>();
+  fresh_command->header.stamp = node_->now();
+  fresh_command->header.frame_id = parameters_->planning_frame;
+  fresh_command->joint_names = internal_joint_state_.name;
+  
+  trajectory_msgs::msg::JointTrajectoryPoint point;
+  point.time_from_start = rclcpp::Duration::from_seconds(parameters_->publish_period);
+  
+  // Get actual current positions from planning scene
+  planning_scene_monitor_->getStateMonitor()->getCurrentState()
+      ->copyJointGroupPositions(joint_model_group_, point.positions);
+  
+  point.velocities.resize(num_joints_, 0.0);
+  point.accelerations.resize(num_joints_, 0.0);
+  
+  fresh_command->points.push_back(point);
+  last_sent_command_ = std::move(fresh_command);
+  
+  // Also reset the smoother so it doesn't remember old positions
+  resetLowPassFilters(original_joint_state_);
+}
 
 void ServoCalcs::start()
 {

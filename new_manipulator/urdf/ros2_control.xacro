@@ -22,6 +22,10 @@
       <xacro:unless value="$(arg use_sim)">
         <xacro:unless value="$(arg use_fake_hardware)">
           <plugin>new_manipulator_hardware/MicroROSHardware</plugin>
+          <!--It asks pluginlib:
+
+"Find me a class named new_manipulator_hardware/MicroROSHardware that implements hardware_interface::SystemInterface"
+Pluginlib then scans the entire ament index across ALL packages — it doesn't care which package the URDF came from. It finds the entry registered by new_manipulator_hardware package and loads that .so.-->
         </xacro:unless>
       </xacro:unless>
     </hardware>

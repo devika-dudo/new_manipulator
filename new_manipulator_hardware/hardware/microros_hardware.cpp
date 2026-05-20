@@ -1,13 +1,13 @@
 // microros_hardware.cpp - Fixed: Removed dual mode switching conflict
 
 #include "new_manipulator_hardware/microros_hardware.hpp"
-
+#include "trajectory_msgs/msg/joint_trajectory.hpp"
 #include <chrono>
 #include <cmath>
 #include <limits>
 #include <memory>
 #include <vector>
-
+#include <std_srvs/srv/trigger.hpp>
 #include "hardware_interface/types/hardware_interface_type_values.hpp"
 #include "rclcpp/rclcpp.hpp"
 
@@ -70,13 +70,32 @@ hardware_interface::CallbackReturn MicroROSHardware::on_init(
     "/control_mode", 10,
     std::bind(&MicroROSHardware::teensy_mode_callback, this, std::placeholders::_1),
     teensy_mode_options);
-
+auto servo_raw_options = rclcpp::SubscriptionOptions();
+servo_raw_options.callback_group = callback_group_;
+servo_raw_sub_ = node_->create_subscription<std_msgs::msg::Float64MultiArray>(
+    "/servo_raw_commands", 10,
+    [this](const std_msgs::msg::Float64MultiArray::SharedPtr msg) {
+        latest_servo_cmd_ = msg;
+    },
+    servo_raw_options);
   joint_command_pub_ = node_->create_publisher<std_msgs::msg::Float64MultiArray>(
     "/joint_commands_to_teensy", 10);
 
   mode_status_pub_ = node_->create_publisher<std_msgs::msg::Bool>(
     "/servo_mode_status", 10);
-  
+  traj_pub_ = node_->create_publisher<trajectory_msgs::msg::JointTrajectory>(
+    "/arm_group_controller/joint_trajectory", 10);
+
+    resync_servo_client_ = node_->create_client<std_srvs::srv::Trigger>(
+    "/servo_node/resync_to_current_state");
+    switch_controller_client_ = node_->create_client<controller_manager_msgs::srv::SwitchController>(
+  "/controller_manager/switch_controller");
+    pause_servo_client_ = node_->create_client<std_srvs::srv::Trigger>(
+  "/servo_node/pause_servo");
+    unpause_servo_client_ = node_->create_client<std_srvs::srv::Trigger>(
+      "/servo_node/unpause_servo");
+    reset_servo_client_ = node_->create_client<std_srvs::srv::Trigger>(
+  "/servo_node/reset_servo_status");
   executor_ = std::make_shared<rclcpp::executors::SingleThreadedExecutor>();
   executor_->add_node(node_);
 
@@ -124,10 +143,10 @@ hardware_interface::CallbackReturn MicroROSHardware::on_activate(
 {
   RCLCPP_INFO(node_->get_logger(), "Activating...");
 
-  for (size_t i = 0; i < hw_commands_.size(); i++)
-  {
-    if (std::isnan(hw_positions_[i]))
-    {
+  // Pause servo immediately - trajectory controller is the default
+
+  for (size_t i = 0; i < hw_commands_.size(); i++) {
+    if (std::isnan(hw_positions_[i])) {
       hw_positions_[i] = 0.0;
       hw_velocities_[i] = 0.0;
     }
@@ -162,26 +181,43 @@ hardware_interface::return_type MicroROSHardware::write(
   const rclcpp::Time & /*time*/, const rclcpp::Duration & /*period*/)
 {
 
-  if (servo_mode_ || teensy_in_pwm_mode_ ) {
-    // Don't publish - servo is in control
-    for (size_t i = 0; i < hw_commands_.size(); i++) {
-      hw_commands_[i] = hw_positions_[i];  // ← controller never forgets current pose
+  if (teensy_in_pwm_mode_) {
+    // keep hw_commands_ synced so controller doesn't forget
+    for (size_t i = 0; i < hw_commands_.size(); i++)
+      hw_commands_[i] = hw_positions_[i];
+    return hardware_interface::return_type::OK;
+  }
+
+  if (servo_mode_) {
+    // keep hw_commands_ synced
+    for (size_t i = 0; i < hw_commands_.size(); i++)
+      hw_commands_[i] = hw_positions_[i];
+    // relay servo output directly to Teensy
+    if (latest_servo_cmd_) { //only publish in servo mode 
+      joint_command_pub_->publish(*latest_servo_cmd_);
     }
-    return hardware_interface::return_type::OK;  // don't publish
+    return hardware_interface::return_type::OK;
   }
     
-  
+  const std::vector<std::string> motor_joints = {
+  "joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6"
+};
+
   // Trajectory mode: publish commands
   auto msg = std_msgs::msg::Float64MultiArray();
   msg.data.resize(6);
   
-  for (size_t i = 0; i < 6 && i < hw_commands_.size(); i++)
-  {
-    msg.data[i] = hw_commands_[i];
+  for (size_t teensy_idx = 0; teensy_idx < 6; teensy_idx++) {
+  for (size_t j = 0; j < info_.joints.size(); j++) {
+    if (info_.joints[j].name == motor_joints[teensy_idx]) {
+      msg.data[teensy_idx] = hw_commands_[j];
+      break;
+    }
   }
-  
+}
   joint_command_pub_->publish(msg);
-
+RCLCPP_INFO_THROTTLE(node_->get_logger(), *node_->get_clock(), 500,
+    "Publishing cmd[1]=%.4f pos[1]=%.4f", hw_commands_[1], hw_positions_[1]);
   return hardware_interface::return_type::OK;
 }
 
@@ -215,39 +251,75 @@ void MicroROSHardware::teensy_command_callback(const std_msgs::msg::Float64Multi
 }
 //this is servo_mode callback
 void MicroROSHardware::mode_switch_callback(const std_msgs::msg::Bool::SharedPtr msg)
-{//the msg will be either true or false , so initially its false 
+{
   bool new_mode = msg->data;
-  //if new data , servo mode is the new data 
-  if (new_mode != servo_mode_)
+  if (new_mode == servo_mode_) return;
+  servo_mode_ = new_mode;
+
+  if (servo_mode_)
+{
+  latest_servo_cmd_ = nullptr;
+  RCLCPP_INFO(node_->get_logger(), "SWITCHING TO SERVO MODE");
+
+  std::thread([this]() {
+
+    // Step 1: TRAJ - sync hw_commands_
+    for (size_t i = 0; i < hw_commands_.size(); i++)
+      hw_commands_[i] = std::isnan(hw_positions_[i]) ? 0.0 : hw_positions_[i];
+
+    // Step 2: TRAJ - activate trajectory controller
+    auto sw_req = std::make_shared<controller_manager_msgs::srv::SwitchController::Request>();
+    sw_req->activate_controllers = {"arm_group_controller"};
+    sw_req->strictness = controller_manager_msgs::srv::SwitchController::Request::BEST_EFFORT;
+    if (switch_controller_client_->wait_for_service(std::chrono::seconds(2)))
+      switch_controller_client_->async_send_request(sw_req);
+    std::this_thread::sleep_for(std::chrono::milliseconds(150));
+
+    // Step 3: PID - send hold trajectory at current position
+    trajectory_msgs::msg::JointTrajectory traj;
+    traj.joint_names = {"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
+    trajectory_msgs::msg::JointTrajectoryPoint pt;
+    pt.positions.resize(6);
+    for (size_t i = 0; i < 6; i++)
+      pt.positions[i] = std::isnan(hw_positions_[i]) ? 0.0 : hw_positions_[i];
+    pt.time_from_start = rclcpp::Duration::from_seconds(0.1);
+    traj.points.push_back(pt);
+    traj_pub_->publish(traj);
+    std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+    // Step 4: SERVO - deactivate traj controller
+    auto sw_req2 = std::make_shared<controller_manager_msgs::srv::SwitchController::Request>();
+    sw_req2->deactivate_controllers = {"arm_group_controller"};
+    sw_req2->strictness = controller_manager_msgs::srv::SwitchController::Request::BEST_EFFORT;
+    if (switch_controller_client_->wait_for_service(std::chrono::seconds(2)))
+      switch_controller_client_->async_send_request(sw_req2);
+    std::this_thread::sleep_for(std::chrono::milliseconds(150));
+
+    // Step 5: SERVO - unpause
+    if (unpause_servo_client_->wait_for_service(std::chrono::seconds(2)))
+      unpause_servo_client_->async_send_request(
+          std::make_shared<std_srvs::srv::Trigger::Request>());
+
+    RCLCPP_INFO(node_->get_logger(), "Servo mode active");
+  }).detach();
+}
+  else
   {
-    servo_mode_ = new_mode;
-    
-    if (servo_mode_) //if true 
-    {
-      RCLCPP_INFO(node_->get_logger(), "🎮 SWITCHING TO SERVO MODE");
-    }
-    else
-    {
-      RCLCPP_INFO(node_->get_logger(), "🤖 SWITCHING TO TRAJECTORY MODE");
-      
-      // ========== CRITICAL: Sync commands to current position ==========
-      // Publish current joint states as new commands to prevent jumping!, so we need to make sure joint states are recieved no matter in what mode 
-      auto sync_msg = std_msgs::msg::Float64MultiArray();
-      sync_msg.data.resize(6);
-      
+    RCLCPP_INFO(node_->get_logger(), "SWITCHING TO TRAJECTORY MODE");
+    std::thread([this]() {
+      // 2. Sync hw_commands_ to actual position
       for (size_t i = 0; i < hw_commands_.size(); i++)
-      {
-        // Use current actual position from encoders
-        hw_commands_[i] = hw_positions_[i];
-        sync_msg.data[i] = hw_positions_[i];
-        
-        RCLCPP_INFO(node_->get_logger(), "  Joint %zu synced to: %.4f rad", i, hw_positions_[i]);
-      }
-      
-      // Publish current position as command
-      joint_command_pub_->publish(sync_msg);
-      RCLCPP_INFO(node_->get_logger(), "✓ Published current position as starting command");
-    }
+        hw_commands_[i] = std::isnan(hw_positions_[i]) ? 0.0 : hw_positions_[i];
+
+      // 3. Activate trajectory controller
+      auto sw_req = std::make_shared<controller_manager_msgs::srv::SwitchController::Request>();
+      sw_req->activate_controllers = {"arm_group_controller"};
+      sw_req->strictness = controller_manager_msgs::srv::SwitchController::Request::BEST_EFFORT;
+      if (switch_controller_client_->wait_for_service(std::chrono::seconds(2)))
+        switch_controller_client_->async_send_request(sw_req);
+
+      RCLCPP_INFO(node_->get_logger(), "Trajectory mode active");
+    }).detach();
   }
 }
 
@@ -257,25 +329,58 @@ void MicroROSHardware::mode_switch_callback(const std_msgs::msg::Bool::SharedPtr
 void MicroROSHardware::teensy_mode_callback(const std_msgs::msg::String::SharedPtr msg)
 {
   std::string mode = msg->data;
-  
-  RCLCPP_INFO(node_->get_logger(), "========================================");
-  RCLCPP_INFO(node_->get_logger(), "Teensy control mode: %s", mode.c_str());
-  
-  if (mode == "PID_CONTROL")
-  {
-    teensy_in_pwm_mode_ = true;  
-    RCLCPP_INFO(node_->get_logger(), "PID mode activated");
-    RCLCPP_INFO(node_->get_logger(), "Position sync handled by mode_switch_handler node");
-    // ✓ REMOVED: Publishing commands here - let mode_switch_handler do it!
-    // That node has access to ACTUAL encoder positions from /joint_states_teensy
-  }
+
+if (mode == "PID_CONTROL")
+{
+    teensy_in_pwm_mode_ = false;
+    RCLCPP_INFO(node_->get_logger(), "Switching to PID_CONTROL");
+    std::thread([this]() {
+
+        // Step 1: TRAJ - sync hw_commands_
+        for (size_t i = 0; i < hw_commands_.size(); i++)
+            hw_commands_[i] = std::isnan(hw_positions_[i]) ? 0.0 : hw_positions_[i];
+
+        // Step 2: TRAJ - activate trajectory controller
+        auto sw_req = std::make_shared<controller_manager_msgs::srv::SwitchController::Request>();
+        sw_req->activate_controllers = {"arm_group_controller"};
+        sw_req->strictness = controller_manager_msgs::srv::SwitchController::Request::BEST_EFFORT;
+        if (switch_controller_client_->wait_for_service(std::chrono::seconds(2)))
+            switch_controller_client_->async_send_request(sw_req);
+        std::this_thread::sleep_for(std::chrono::milliseconds(150));
+
+        // Step 3: PID - send hold trajectory at current position
+        trajectory_msgs::msg::JointTrajectory traj;
+        traj.joint_names = {"joint_1","joint_2","joint_3","joint_4","joint_5","joint_6"};
+        trajectory_msgs::msg::JointTrajectoryPoint pt;
+        pt.positions.resize(6);
+        for (size_t i = 0; i < 6; i++)
+            pt.positions[i] = std::isnan(hw_positions_[i]) ? 0.0 : hw_positions_[i];
+        pt.time_from_start = rclcpp::Duration::from_seconds(0.1);
+        traj.points.push_back(pt);
+        traj_pub_->publish(traj);
+        std::this_thread::sleep_for(std::chrono::milliseconds(200));
+
+        RCLCPP_INFO(node_->get_logger(), "PID active, holding at current position");
+    }).detach();
+}
   else if (mode == "PWM_CONTROL")
   {
-    teensy_in_pwm_mode_ = false; 
-    RCLCPP_INFO(node_->get_logger(), "PWM mode activated - direct motor control");
+    latest_servo_cmd_ = nullptr;
+
+    teensy_in_pwm_mode_ = true;
+    RCLCPP_INFO(node_->get_logger(), "Switching to PWM_CONTROL");
+std::thread([this]() {
+      // Deactivate trajectory controller → stops overwriting hw_commands_
+      auto sw_req = std::make_shared<controller_manager_msgs::srv::SwitchController::Request>();
+      sw_req->deactivate_controllers = {"arm_group_controller"};
+      sw_req->strictness = controller_manager_msgs::srv::SwitchController::Request::BEST_EFFORT;
+      if (switch_controller_client_->wait_for_service(std::chrono::seconds(2)))
+        switch_controller_client_->async_send_request(sw_req);
+
+      RCLCPP_INFO(node_->get_logger(), "Trajectory controller deactivated for PWM mode");
+    }).detach();
+
   }
-  
-  RCLCPP_INFO(node_->get_logger(), "========================================");
 }
 
 }  // namespace new_manipulator_hardware
